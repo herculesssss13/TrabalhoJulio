@@ -1,0 +1,19 @@
+<p-dialog [(visible)]="exibir" [modal]="true" [style]="{ width: '60vw' }" header="{{ header }}">
+  <form >
+
+      <div class="p-grid ">
+        <h3 class="p-col-12">Ator</h3>
+        <div class="ui-inputgroup border-textInput">
+        <span class="ui-float-label">
+            <input [(ngModel)]="ator.nome" id="nome" name="first" value="nome"type="text" autoResize="autoResize" cols="85"pInputText onfocus="this.value='';">
+            <label for="float-input">Nome</label>
+        </span>
+
+      </div>
+        <button (click)="salvar()" class="ui-button-raised button-spacing" label="Salvar" pButton type="button"></button>
+        <button (click)="cancelar()" class="ui-button-raised button-spacing" label="Cancelar" pButton type="button"></button>
+      </div>
+
+  </form>
+</p-dialog>
+

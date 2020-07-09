@@ -1,0 +1,13 @@
+<p-megaMenu [model]="items" (onClick)="onSubmit()">
+  <div>
+    <input type="text" pInputText placeholder="Search" style="margin-left: 520px">
+    <button pButton label="Logout" icon="pi pi-power-off" style="margin-left:.25em"></button>
+  </div>
+</p-megaMenu>
+
+<p-card>
+  <div class="home-text" >
+    Bem vindo ao sistema de Locadora. ! <br />
+  </div>
+</p-card>
+<router-outlet></router-outlet>
