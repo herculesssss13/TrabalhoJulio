@@ -21,7 +21,7 @@ export class ClasseService {
 
 
   salvar(item: Classe){
-    this.http.post('http://localhost:8090/diretor', item).subscribe(
+    this.http.post('http://localhost:8090/classe', item).subscribe(
     res => {
       alert('Classe Salva com Sucesso!');
     },

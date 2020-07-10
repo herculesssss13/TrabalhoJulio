@@ -1,0 +1,14 @@
+.descricao {
+  text-overflow: ellipsis;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.border-textInput {
+  margin-bottom: 20px;
+}
+
+.button-spacing {
+  margin-right: 20px;
+}

@@ -1,6 +1,7 @@
+import { ClienteListComponent } from './pages/cliente/list/cliente-list/cliente-list.component';
+import { ClienteFormComponent } from './pages/cliente/form/cliente-form/cliente-form.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -21,14 +22,9 @@ import { DiretorListComponent } from './pages/diretor/list/diretor-list/diretor-
 import {InputTextModule} from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-
 import { ClasseFormComponent } from './pages/classe/form/classe-form/classe-form.component';
 import { ClasseListComponent } from './pages/classe/list/classe-list/classe-list.component';
-import { TituloListComponent } from './pages/titulo/list/titulo-list/titulo-list.component';
-import { TituloFormComponent } from './pages/titulo/form/titulo-form/titulo-form.component';
-import {MatSelectModule} from '@angular/material/select';
-
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 
@@ -42,8 +38,8 @@ import {MatSelectModule} from '@angular/material/select';
     DiretorListComponent,
     ClasseFormComponent,
     ClasseListComponent,
-    TituloListComponent,
-    TituloFormComponent
+    ClienteFormComponent,
+    ClienteListComponent
   ],
   imports: [
     BrowserModule,
@@ -59,14 +55,12 @@ import {MatSelectModule} from '@angular/material/select';
     HttpClientModule,
     InputTextModule,
     ReactiveFormsModule,
-    TooltipModule.forRoot(),
-    MatSelectModule
-
- 
-
+    BsDatepickerModule.forRoot(),
+    TooltipModule.forRoot()
 
   ],
   providers: [AtorFormService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

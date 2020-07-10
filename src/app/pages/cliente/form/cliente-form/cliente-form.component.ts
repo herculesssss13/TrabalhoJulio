@@ -1,43 +1,39 @@
+import { ClienteService } from './../../services/cliente.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Classe } from '../../models/Classe';
-import { ClasseService } from '../../services/classe.service';
+import { Cliente } from '../../models/cliente';
 import { Location} from '@angular/common';
 
-
 @Component({
-  selector: 'app-classe-form',
-  templateUrl: './classe-form.component.html',
-  styleUrls: ['./classe-form.component.css']
+  selector: 'app-cliente-form',
+  templateUrl: './cliente-form.component.html',
+  styleUrls: ['./cliente-form.component.css']
 })
-export class ClasseFormComponent implements OnInit {
+export class ClienteFormComponent implements OnInit {
   currentDate = new Date();
   form: FormGroup;
   submitted =false;
-  public classe:Classe;
+  public cliente:Cliente;
 
-  constructor(private classeServico:ClasseService,private fb:FormBuilder,private location:Location) { }
+  constructor(private clienteServico:ClienteService, private fb:FormBuilder,private location:Location) { }
 
   ngOnInit() {
-    this.classe = new Classe();
+    this.cliente = new Cliente();
     this.form = this.fb.group({
       nome:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
-      valor:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
-      prazoDevolucao:[null]
+      dataNascimento:[null],
+      sexo:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(1)]],
+      estahAtivo:[null]
     });
   }
-
-
-
-
 
   onSubmit(){
     this.submitted = true;
     console.log(this.form.value);
     if(this.form.valid){
-      this.classeServico.create(this.form.value).subscribe(
+      this.clienteServico.create(this.form.value).subscribe(
         sucesso=>{
-          alert('Classe Salva com Sucesso!');
+          alert('Cliente Salvo com Sucesso!');
           this.location.back();
         },
         error => console.error(error),
@@ -58,12 +54,12 @@ export class ClasseFormComponent implements OnInit {
   }
 
   salvar() {
-    this.classeServico.salvar(this.classe);
-
-
+    this.clienteServico.salvar(this.cliente);
   }
 
 
 }
 
 export class DemoDatePickerAdaptivePositionComponent {}
+
+
