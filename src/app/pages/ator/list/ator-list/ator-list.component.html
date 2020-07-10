@@ -1,44 +1,56 @@
+<div class="card">
+  <div class="card-header">
+    <p-card>
+      <h3 class="p-col-12">Ator</h3>
+      <span class="ui-float-label">
+        
 
-<button (click)="openDialog(true,null)" class="btn-margin" label="Novo" pButton></button>
-
-<div class="p-grid" style="width: 160px;">
-  <div class="p-col-10" style="width: 360px;">
-    <p-table [value]="atores" [rows]="20" >
-      <ng-template pTemplate="caption" >
-        Lista de Atores
-      </ng-template>
-      <ng-template pTemplate="header">
-          <tr>
-            <th style="width: 50px;" ></th>
-            <th style="width: 50px;">Id</th>
-            <th style="width: 250px;">Nome</th>
-          </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-atores>
-          <tr class="ui-selectable-row">
-            <td>
-              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-            </td>
-            <td >
-              {{atores.id}}
-            </td>
-            <td >
-              {{atores.nome}}
-            </td>
-          </tr>
-      </ng-template>
-    </p-table>
+        
+          <button type="button" class="btn btn-primary" [routerLink]="['/novoAtor']" >Novo Ator</button>
+        
+        
+      </span>  
+    </p-card>
   </div>
-  <div class="p-col-2" id="botoes">
-    <button class="ui-button-rounded"
-              icon="pi pi-trash"
-              id="botao1" pButton type="button" pTooltip="Excluir" tooltipPosition="right"></button>
-    <button class="ui-button-rounded"
-              icon="pi pi-pencil"
-              id="botao2" pButton type="button" pTooltip="Editar" tooltipPosition="right"></button>
-    <button class="ui-button-rounded"
-              icon="pi pi-eye"
-              id="botao3" pButton type="button" pTooltip="Visualizar" tooltipPosition="right"></button>
+  
+
+  <div class="card-body">
+    <p-card>
+      <table class="table table-horver">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let a of atores">
+              <td>{{a.id}}</td>
+              <td>{{a.nome}}</td>
+              <td>
+                <span class="float-right">
+                  <button class="btn btn-outline-warning mb-1 btn-sm ">
+                    atualizar
+                  </button>
+                  
+                  <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onConfirmDelete(a)">
+                    Remover
+                  </button>
+                </span>
+              </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+    </p-card>
   </div>
 </div>
-<app-ator-form #DialogCadastrar (alterar)="atualizarPagina()"></app-ator-form>
+
+
+
+
+  
+
+

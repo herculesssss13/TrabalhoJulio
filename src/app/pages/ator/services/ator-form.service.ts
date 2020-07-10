@@ -7,22 +7,25 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AtorFormService {
-  atoresUrl = 'http://localhost:8090/ator';
+  private readonly API = 'http://localhost:8090/ator';
   form: any = {};
-
   constructor(private http:HttpClient) {
     this.form.title = "";
     this.form.body = "";
    }
 
-  listar(){
-    return this.http.get<any[]>(`${this.atoresUrl}`)
+   listar(){
+    return this.http.get<Ator[]>(this.API);
   }
+  create(ator) {
+    return this.http.post(this.API, ator);
+  }
+
 
   salvar(item: Ator){
     this.http.post('http://localhost:8090/ator', item).subscribe(
     res => {
-      alert('Artigo Salvo com Sucesso!');
+      alert('Ator Salvo com Sucesso!');
     },
     err => {
       console.error(err);
@@ -31,10 +34,14 @@ export class AtorFormService {
   }
 
   update(item: any): Observable<any> {
-    return this.http.put<any>(`${this.atoresUrl}`, item);
+    return this.http.put<any>(`${this.API}`, item);
   }
 
   show(id: number): Observable<any> {
-    return this.http.get(`${this.atoresUrl}/${id}`) as Observable<any>;
+    return this.http.get(`${this.API}/${id}`) as Observable<any>;
+  }
+
+  remove(id){
+    return this.http.delete(`${this.API}/${id}`);
   }
 }

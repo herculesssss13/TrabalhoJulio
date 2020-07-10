@@ -1,0 +1,41 @@
+<p-card>
+    <form class="needs-validation" novalidate [formGroup]= "form">
+      <div class="form-row">
+        <div class="col-md-3 mb-3">
+          <label for="nome">Nome da Classe</label>
+          <input type="text" class="form-control" id="nome" formControlName="nome" [ngClass]="{ 'is-invalid':submitted && hasError('nome') }"/>
+          <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['required']">
+            Por favor informe um nome para a classe.
+        </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <label for="nome">Valor da Classe</label>
+
+            <input type="text" class="form-control" id="valor" formControlName="valor" [ngClass]="{ 'is-invalid':submitted && hasError('valor') }"/>
+            <div class="invalid-feedback" *ngIf="hasError('valor') && hasError('valor')['required']">
+              Por favor informe um valor para a classe.
+            </div>
+        </div>
+        <div class="col-xs-12 col-12 col-md-4 form-group">
+          <label for="datee">Data de Devolução</label>
+          <input type="text"
+                 placeholder="Data de Devolução"
+                 class="form-control"
+                 id = "prazoDevolucao"
+                 formControlName="prazoDevolucao"
+                 [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
+                 bsDatepicker>
+        </div>
+        <br>
+
+
+
+
+      </div>
+      <div style="margin-top: 10px;">
+        <button type="sumit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+        <button type="sumit" class="btn btn-default" (click)="onCancel()">Cancelar</button>
+      </div>
+    </form>
+    </p-card>

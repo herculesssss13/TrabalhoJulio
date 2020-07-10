@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Ator } from '../../models/Ator';
 import { AtorFormService } from '../../services/ator-form.service';
+import { Location} from '@angular/common';
 
 @Component({
   selector: 'app-ator-form',
@@ -9,35 +10,47 @@ import { AtorFormService } from '../../services/ator-form.service';
   styleUrls: ['./ator-form.component.css']
 })
 export class AtorFormComponent implements OnInit {
-  public exibir: boolean;
-  public header: string;
-  public formAtor: FormGroup;
+  
+  
+  
   public ator:Ator;
+  form: FormGroup;
+  submitted =false;
 
-  constructor(private atorService: AtorFormService) { }
+  constructor(private atorService: AtorFormService,private fb:FormBuilder,private location:Location) { }
 
   ngOnInit(): void {
-    this.exibir = false;
-    this.header = '';
     this.ator = new Ator();
+    this.form = this.fb.group({
+      nome:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]]
+    });
   }
 
-  salvar() {
-    this.atorService.salvar(this.ator);
-    this.exibir=false;
+  onSubmit(){
+    this.submitted = true;
+    console.log(this.form.value);
+    if(this.form.valid){
+      this.atorService.create(this.form.value).subscribe(
+        sucesso=>{
+          alert('Ator Salvo com Sucesso!');
+          this.location.back();
+        },
+        error => console.error(error),
+        ()=> console.log('Request completa')
+      );
+    }
   }
 
-  cadastar(ator:Ator) {
-    this.exibir=false;
+  onCancel(){
+    this.submitted = false;
+    this.form.reset();
+    this.location.back();
+  
   }
 
-  cancelar() {
-    this.exibir = false;
+  hasError(field:string){
+    return this.form.get(field).errors;
   }
 
-  openDialog(edicao: boolean, id: number) {
-      this.exibir = true;
-
-  }
 
 }

@@ -22,7 +22,7 @@ export class DiretorListComponent implements OnInit {
 
   diretores: Diretor[];
   diretor: Diretor;
-  modalRef: BsModalRef;
+ 
   diretorSelecionado:Diretor;
   @ViewChild('deleteModal') deleteModal;
 

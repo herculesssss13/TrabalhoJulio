@@ -1,6 +1,7 @@
+import { ClienteListComponent } from './pages/cliente/list/cliente-list/cliente-list.component';
+import { ClienteFormComponent } from './pages/cliente/form/cliente-form/cliente-form.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -21,8 +22,9 @@ import { DiretorListComponent } from './pages/diretor/list/diretor-list/diretor-
 import {InputTextModule} from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-
-
+import { ClasseFormComponent } from './pages/classe/form/classe-form/classe-form.component';
+import { ClasseListComponent } from './pages/classe/list/classe-list/classe-list.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 
@@ -33,7 +35,11 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     AtorFormComponent,
     AtorListComponent,
     DiretorFormComponent,
-    DiretorListComponent
+    DiretorListComponent,
+    ClasseFormComponent,
+    ClasseListComponent,
+    ClienteFormComponent,
+    ClienteListComponent
   ],
   imports: [
     BrowserModule,
@@ -49,12 +55,12 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     HttpClientModule,
     InputTextModule,
     ReactiveFormsModule,
+    BsDatepickerModule.forRoot(),
     TooltipModule.forRoot()
- 
-
 
   ],
   providers: [AtorFormService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

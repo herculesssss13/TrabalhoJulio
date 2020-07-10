@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MegaMenuItem,MenuItem} from 'primeng/api';
 import { Routes, Router, ActivatedRoute } from '@angular/router';
-import { AtorListComponent } from 'src/app/pages/ator/list/ator-list/ator-list.component';
-import { AtorFormService } from 'src/app/pages/ator/services/ator-form.service';
 
 @Component({
   selector: 'app-menu',
@@ -28,9 +26,10 @@ export class MenuComponent implements OnInit {
                     [
                         {
                             label: 'Cadastro',
-                            items: [{label: 'Ator',routerLink:['/lista-atores']},
+                            items: [
+                                    {label: 'Ator',routerLink:['/lista-atores']},
                                     {label: 'Diretor',routerLink:['/lista-diretores']},
-                                    {label: 'Classe'},
+                                    {label: 'Classe',routerLink:['/lista-classe']},
                                     {label: 'Item'},
                                     {label: 'Titulo'}
                                   ]
@@ -43,22 +42,8 @@ export class MenuComponent implements OnInit {
               items: [
                   [
                       {
-                          label: 'Event 1',
-                          items: [{label: 'Event 1.1'}, {label: 'Event 1.2'}]
-                      },
-                      {
-                          label: 'Event 2',
-                          items: [{label: 'Event 2.1'}, {label: 'Event 2.2'}]
-                      }
-                  ],
-                  [
-                      {
-                          label: 'Event 3',
-                          items: [{label: 'Event 3.1'}, {label: 'Event 3.2'}]
-                      },
-                      {
-                          label: 'Event 4',
-                          items: [{label: 'Event 4.1'}, {label: 'Event 4.2'}]
+                          label: 'Atendimentos',
+                          items: [{label: 'Cliente',routerLink:['/lista-clientes']}]
                       }
                   ]
               ]
