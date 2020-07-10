@@ -1,0 +1,18 @@
+<p-card>
+<form class="needs-validation" novalidate [formGroup]= "form">
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="nome">Diretor</label>
+      <input type="text" class="form-control" id="nome" formControlName="nome" [ngClass]="{ 'is-invalid':submitted && hasError('nome') }"/>
+      <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['required']">
+        Por favor informe um nome para o diretor
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 10px;">
+    <button type="sumit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+    <button type="sumit" class="btn btn-default" (click)="onCancel()">Cancelar</button>
+  </div>
+</form>
+</p-card>
+
