@@ -1,0 +1,70 @@
+<div class="card">
+    <div class="card-header">
+      <p-card>
+        <h3 class="p-col-12">Título</h3>
+        <span class="ui-float-label">
+          
+  
+          
+            <button type="button" class="btn btn-primary" [routerLink]="['/novoTitulo']" >Novo Título</button>
+          
+          
+        </span>  
+      </p-card>
+    </div>
+    
+  
+    <div class="card-body">
+      <p-card>
+        <table class="table table-horver">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Atores</th>
+              <th>Diretor</th>
+              <th>Ano</th>
+              <th>Sinopse</th>
+              <th>Categoria</th>
+              <th>Classe</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let titulo of titulos">
+                <td>{{titulo.id}}</td>
+                <td>{{titulo.nome}}</td>
+                <td>
+                    <div *ngFor="let ator of titulo.atores">{{ator.nome}}</div>
+                </td>
+                <td>{{titulo.diretor.nome}}</td>
+                <td>{{titulo.ano}}</td>
+                <td>{{titulo.sinopse}}</td>
+                <td>{{titulo.categoria}}</td>
+                <td>{{titulo.classe.nome}}</td>
+                <td>
+                  <span class="float-right">
+                    <button class="btn btn-outline-warning mb-1 btn-sm ">
+                      atualizar
+                    </button>
+                    
+                    <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onConfirmDelete(titulo)">
+                      Remover
+                    </button>
+                  </span>
+                </td>
+            </tr>
+  
+          </tbody>
+  
+        </table>
+      </p-card>
+    </div>
+  </div>
+  
+  
+  
+  
+    
+  
+  

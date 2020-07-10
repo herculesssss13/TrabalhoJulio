@@ -31,8 +31,9 @@ export class MenuComponent implements OnInit {
                             items: [{label: 'Ator',routerLink:['/lista-atores']},
                                     {label: 'Diretor',routerLink:['/lista-diretores']},
                                     {label: 'Classe',routerLink:['/lista-classe']},
-                                    {label: 'Item'},
-                                    {label: 'Titulo'}
+                                    {label: 'Titulo',routerLink:['/lista-titulos']},
+                                    {label: 'Item'}
+                                    
                                   ]
                         }
                     ]
