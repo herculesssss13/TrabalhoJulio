@@ -40,30 +40,16 @@ export class MenuComponent implements OnInit {
                 ]
             },
             {
-              label: 'Atendimento Cliente', icon: 'pi pi-fw pi-calendar',
-              items: [
-                  [
-                      {
-                          label: 'Event 1',
-                          items: [{label: 'Event 1.1'}, {label: 'Event 1.2'}]
-                      },
-                      {
-                          label: 'Event 2',
-                          items: [{label: 'Event 2.1'}, {label: 'Event 2.2'}]
-                      }
-                  ],
-                  [
-                      {
-                          label: 'Event 3',
-                          items: [{label: 'Event 3.1'}, {label: 'Event 3.2'}]
-                      },
-                      {
-                          label: 'Event 4',
-                          items: [{label: 'Event 4.1'}, {label: 'Event 4.2'}]
-                      }
-                  ]
-              ]
-          }
+                label: 'Atendimento Cliente', icon: 'pi pi-fw pi-calendar',
+                items: [
+                    [
+                        {
+                            label: 'Atendimentos',
+                            items: [{label: 'Cliente',routerLink:['/lista-clientes']}]
+                        }
+                    ]
+                ]
+            }
         ]
     }
 

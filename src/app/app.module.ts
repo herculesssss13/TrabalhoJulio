@@ -27,6 +27,9 @@ import { ClasseListComponent } from './pages/classe/list/classe-list/classe-list
 import { TituloListComponent } from './pages/titulo/list/titulo-list/titulo-list.component';
 import { TituloFormComponent } from './pages/titulo/form/titulo-form/titulo-form.component';
 import {MatSelectModule} from '@angular/material/select';
+import { ClienteFormComponent } from './pages/cliente/form/cliente-form/cliente-form.component';
+import { ClienteListComponent } from './pages/cliente/list/cliente-list/cliente-list.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 
@@ -43,7 +46,9 @@ import {MatSelectModule} from '@angular/material/select';
     ClasseFormComponent,
     ClasseListComponent,
     TituloListComponent,
-    TituloFormComponent
+    TituloFormComponent,
+    ClienteFormComponent,
+    ClienteListComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +65,7 @@ import {MatSelectModule} from '@angular/material/select';
     InputTextModule,
     ReactiveFormsModule,
     TooltipModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     MatSelectModule
 
  

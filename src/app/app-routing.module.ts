@@ -9,6 +9,8 @@ import { ClasseFormComponent } from './pages/classe/form/classe-form/classe-form
 import { AtorFormComponent } from './pages/ator/form/ator-form/ator-form.component';
 import { TituloListComponent } from './pages/titulo/list/titulo-list/titulo-list.component';
 import { TituloFormComponent } from './pages/titulo/form/titulo-form/titulo-form.component';
+import { ClienteListComponent } from './pages/cliente/list/cliente-list/cliente-list.component';
+import { ClienteFormComponent } from './pages/cliente/form/cliente-form/cliente-form.component';
 
 
 
@@ -24,6 +26,8 @@ const routes: Routes = [
       {path: 'novaClasse',component: ClasseFormComponent},
       {path: 'lista-titulos',component: TituloListComponent},
       {path: 'novoTitulo',component: TituloFormComponent},
+      {path: 'lista-clientes',component: ClienteListComponent},
+      {path: 'novoCliente',component: ClienteFormComponent}
       
       
     ]
