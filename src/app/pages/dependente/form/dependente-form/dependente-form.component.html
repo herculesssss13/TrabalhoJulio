@@ -1,0 +1,54 @@
+<p-card>
+  <form class="needs-validation" novalidate [formGroup]= "form">
+    <div class="form-row">
+      <div class="col-md-3 mb-3">
+        <label for="nome">Nome do Dependente</label>
+        <input type="text" class="form-control" id="nome" formControlName="nome" [ngClass]="{ 'is-invalid':submitted && hasError('nome') }"/>
+        <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['required']">
+          Por favor informe um nome para o Dependente.
+      </div>
+      </div>
+
+      <div class="col-xs-12 col-12 col-md-4 form-group">
+        <label for="dateN">Data de Nascimento</label>
+        <input type="text"
+               placeholder="Data de Nascimento"
+               class="form-control"
+               id = "dataNascimento"
+               formControlName="dataNascimento"
+               [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
+               bsDatepicker>
+      </div>
+      <br>
+
+    </div>
+
+    <div class="form-row2">
+      <div class="col-md-3 mb-3">
+        <label for="dateN">Ativo </label>
+        <input type="checkbox"
+              id = "estahAtivo"
+              formControlName="estahAtivo">
+      </div>
+
+
+      <div class="form-row2">
+        <label for="dateN">Sexo </label>
+        <select type="text"
+              id = "sexo"
+              formControlName="sexo">
+              <option>M</option>
+              <option>F</option>
+      </select>
+      </div>
+    </div>
+
+    <div style="margin-top: 10px;">
+      <button type="sumit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+      <button type="sumit" class="btn btn-default" (click)="onCancel()">Cancelar</button>
+    </div>
+
+
+  </form>
+  </p-card>
+

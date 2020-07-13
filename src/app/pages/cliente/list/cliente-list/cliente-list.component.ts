@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../../models/Cliente';
 import { ClienteService } from '../../services/cliente.service';
+=======
+import { DependenteService } from './../../../dependente/services/dependente.service';
+import { Component, OnInit } from '@angular/core';
+import { Cliente } from '../../models/Cliente';
+import { ClienteService } from '../../services/cliente.service';
+import { Dependente } from 'src/app/pages/dependente/models/Dependente';
+>>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
 
 @Component({
   selector: 'app-cliente-list',
@@ -10,9 +18,16 @@ import { ClienteService } from '../../services/cliente.service';
 export class ClienteListComponent implements OnInit {
   clientes: Cliente[];
   cliente: Cliente;
+<<<<<<< HEAD
   clienteSelecionado:Cliente;
 
   constructor(private clienteService:ClienteService) { }
+=======
+  clienteSelecionado: Cliente;
+
+
+  constructor(private clienteService: ClienteService, private dependenteService: DependenteService) { }
+>>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
 
   ngOnInit(){
     this.cliente = new Cliente();

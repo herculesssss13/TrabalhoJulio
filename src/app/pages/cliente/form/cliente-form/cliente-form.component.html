@@ -41,45 +41,59 @@
                 <option>F</option>
         </select>
         </div>
+
+        <div class="form-row">
+          <div class="col-md-3 mb-3">
+            <label for="cpf">Cpf</label>
+            <input type="text" class="form-control" id="cpf" formControlName="cpf" [ngClass]="{ 'is-invalid':submitted && hasError('cpf') }"/>
+            <div class="invalid-feedback" *ngIf="hasError('cpf') && hasError('cpf')['required']">
+              Por favor informe um cpf.
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-12 col-md-4 form-group">
+            <label for="tel">Telefone</label>
+            <input type="text"
+                   placeholder="Telefone"
+                   class="form-control"
+                   id = "telefone"
+                   formControlName="telefone">
+          </div>
+          <br>
+        </div>
+
+        <div class="form-row">
+          <div class="col-xs-12 col-12 col-md-4 form-group">
+            <label for="end">Endereço</label>
+            <input type="text"
+                   placeholder="Endereço"
+                   class="form-control"
+                   id = "endereco"
+                   formControlName="endereco">
+          </div>
+          <br>
       </div>
-  
-      <div class="form-row">
-        <div class="col-md-3 mb-3">
-          <label for="cpf">Cpf</label>
-          <input type="text" class="form-control" id="cpf" formControlName="cpf" [ngClass]="{ 'is-invalid':submitted && hasError('cpf') }"/>
-          <div class="invalid-feedback" *ngIf="hasError('cpf') && hasError('cpf')['required']">
-            Por favor informe um cpf.
-        </div>
-        </div>
-  
-        <div class="col-xs-12 col-12 col-md-4 form-group">
-          <label for="tel">Telefone</label>
-          <input type="text"
-                 placeholder="Telefone"
-                 class="form-control"
-                 id = "telefone"
-                 formControlName="telefone">
-        </div>
-        <br>
+
+      <div>
+        <div class="form-row">
+          <label for="nome">Dependentes</label>
+                <mat-form-field appearance="fill">
+                    <mat-select multiple  class="control-label" id="dependentes" formControlName="dependentes" >
+                    <mat-option *ngFor="let dependente of dependentes" [value]="dependente">{{dependente.nome}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+          </div>
+          <br>
       </div>
-  
-      <div class="form-row">
-        <div class="col-xs-12 col-12 col-md-4 form-group">
-          <label for="end">Endereço</label>
-          <input type="text"
-                 placeholder="Endereço"
-                 class="form-control"
-                 id = "endereco"
-                 formControlName="endereco">
-        </div>
-        <br>
-      </div>
-  
+
+
       <div style="margin-top: 10px;">
         <button type="sumit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
         <button type="sumit" class="btn btn-default" (click)="onCancel()">Cancelar</button>
       </div>
   
   
+
+
     </form>
     </p-card>

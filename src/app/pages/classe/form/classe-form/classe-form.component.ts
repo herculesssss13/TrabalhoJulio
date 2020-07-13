@@ -24,12 +24,15 @@ export class ClasseFormComponent implements OnInit {
     this.classe = new Classe();
     this.form = this.fb.group({
       nome:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
-      valor:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]]
+      prazoDevolucao:[null]
     });
   }
 
   
   
+
+
+
 
 
   onSubmit(){
@@ -52,6 +55,7 @@ export class ClasseFormComponent implements OnInit {
     this.form.reset();
     this.location.back();
   
+
   }
 
   hasError(field:string){
@@ -66,3 +70,5 @@ export class ClasseFormComponent implements OnInit {
 
 
 }
+
+export class DemoDatePickerAdaptivePositionComponent {}

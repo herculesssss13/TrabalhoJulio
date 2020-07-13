@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-header">
+    <p-card>
+      <h3 class="p-col-12">Dependente</h3>
+      <span class="ui-float-label">
+
+
+
+          <button type="button" class="btn btn-primary" [routerLink]="['/novoDependente']" >Novo Dependente</button>
+
+
+      </span>
+    </p-card>
+  </div>
+
+
+  <div class="card-body">
+    <p-card>
+      <table class="table table-horver">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Data de Nascimento</th>
+            <th>Sexo</th>
+            <th>Ativo</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of dependentes">
+              <td>{{s.numInscricao}}</td>
+              <td>{{s.nome}}</td>
+              <td>{{s.dataNascimento}}</td>
+              <td>{{s.sexo}}</td>
+              <td>{{s.estahAtivo}}</td>
+              <td>
+                <span class="float-right">
+                  <button class="btn btn-outline-warning mb-1 btn-sm ">
+                    atualizar
+                  </button>
+
+                  <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onConfirmDelete(s)">
+                    Remover
+                  </button>
+                </span>
+              </td>
+            </tr>
+
+        </tbody>
+
+      </table>
+    </p-card>
+  </div>
+</div>
+

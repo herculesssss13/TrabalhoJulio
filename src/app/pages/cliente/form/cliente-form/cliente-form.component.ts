@@ -1,8 +1,10 @@
+import { DependenteService } from './../../../dependente/services/dependente.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Cliente } from '../../models/Cliente';
 import { ClienteService } from '../../services/cliente.service';
 import { Location} from '@angular/common';
+import { Dependente } from 'src/app/pages/dependente/models/Dependente';
 
 @Component({
   selector: 'app-cliente-form',
@@ -14,8 +16,12 @@ export class ClienteFormComponent implements OnInit {
   form: FormGroup;
   submitted =false;
   public cliente:Cliente;
-  
-  constructor(private clienteServico:ClienteService, private fb:FormBuilder,private location:Location) { }
+  dependentes: Dependente[];
+
+ 
+
+  constructor(private clienteServico: ClienteService, private dependenteService: DependenteService,
+     private fb: FormBuilder, private location: Location) { }
 
   ngOnInit() {
     this.cliente = new Cliente();
@@ -24,10 +30,14 @@ export class ClienteFormComponent implements OnInit {
       dataNascimento:[null],
       sexo:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(1)]],
       estahAtivo:[null],
-      //cpf:[null],
-      //telefone:[null],
-      //endereco:[null]
+      cpf:[null],
+      endereco:[null],
+      telefone:[null],
+      dependentes: [null]
     });
+
+
+    this.dependenteService.listar().subscribe(dados => this.dependentes = dados);
   }
 
   onSubmit(){
