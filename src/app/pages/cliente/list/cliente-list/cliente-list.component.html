@@ -3,19 +3,6 @@
       <p-card>
         <h3 class="p-col-12">Cliente</h3>
         <span class="ui-float-label">
-<<<<<<< HEAD
-  
-  
-  
-            <button type="button" class="btn btn-primary" [routerLink]="['/novoCliente']" >Novo Cliente</button>
-  
-  
-        </span>
-      </p-card>
-    </div>
-  
-  
-=======
 
 
 
@@ -27,7 +14,6 @@
     </div>
 
 
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
     <div class="card-body">
       <p-card>
         <table class="table table-horver">
@@ -41,10 +27,7 @@
               <th>cpf</th>
               <th>telefone</th>
               <th>endereço</th>
-<<<<<<< HEAD
-=======
               <th>Dependentes</th>
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
               <th></th>
             </tr>
           </thead>
@@ -59,42 +42,23 @@
                 <td>{{c.telefone}}</td>
                 <td>{{c.endereco}}</td>
                 <td>
-<<<<<<< HEAD
-=======
-                  <div *ngFor="let dependente of cliente.dependentes">{{dependente.nome}}</div>
+                  <div *ngFor="let dependente of c.dependentes">{{dependente.nome}}</div>
                 </td>
                 <td>
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
                   <span class="float-right">
                     <button class="btn btn-outline-warning mb-1 btn-sm ">
                       atualizar
                     </button>
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
                     <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onConfirmDelete(c)">
                       Remover
                     </button>
                   </span>
                 </td>
             </tr>
-<<<<<<< HEAD
-  
-          </tbody>
-  
-=======
 
           </tbody>
 
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
         </table>
       </p-card>
     </div>
   </div>
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be

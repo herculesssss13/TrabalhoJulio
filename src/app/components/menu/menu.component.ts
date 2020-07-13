@@ -33,11 +33,6 @@ export class MenuComponent implements OnInit {
                                     {label: 'Classe',routerLink:['/lista-classe']},
                                     {label: 'Titulo',routerLink:['/lista-titulos']},
                                     {label: 'Item'}
-<<<<<<< HEAD
-                                    
-=======
-
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
                                   ]
                         }
                     ]
@@ -49,12 +44,8 @@ export class MenuComponent implements OnInit {
                     [
                         {
                             label: 'Atendimentos',
-<<<<<<< HEAD
-                            items: [{label: 'Cliente',routerLink:['/lista-clientes']}]
-=======
                             items: [{label: 'Cliente',routerLink:['/lista-clientes']},
                                     {label: 'Dependente', routerLink:['/lista-dependentes']}]
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
                         }
                     ]
                 ]

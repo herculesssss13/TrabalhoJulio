@@ -7,15 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ClienteService {
-<<<<<<< HEAD
-  private readonly API = 'http://localhost:8090/cliente';
-
-  constructor(private http:HttpClient) { }
-=======
   private readonly API = 'http://localhost:8090/socio';
 
-  constructor(private http: HttpClient) { }
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
+  constructor(private http:HttpClient) { }
   listar(){
     return this.http.get<Cliente[]>(this.API);
   }
@@ -25,11 +19,7 @@ export class ClienteService {
 
 
   salvar(item: Cliente){
-<<<<<<< HEAD
     this.http.post('http://localhost:8090/cliente', item).subscribe(
-=======
-    this.http.post('http://localhost:8090/socio', item).subscribe(
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
     res => {
       alert('Cliente Salvo com Sucesso!');
     },

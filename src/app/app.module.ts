@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-=======
 import { DependenteListComponent } from './pages/dependente/list/dependente-list/dependente-list.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -27,10 +21,6 @@ import { DiretorListComponent } from './pages/diretor/list/diretor-list/diretor-
 import {InputTextModule} from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-<<<<<<< HEAD
-
-=======
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
 import { ClasseFormComponent } from './pages/classe/form/classe-form/classe-form.component';
 import { ClasseListComponent } from './pages/classe/list/classe-list/classe-list.component';
 import { TituloListComponent } from './pages/titulo/list/titulo-list/titulo-list.component';
@@ -39,12 +29,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { ClienteFormComponent } from './pages/cliente/form/cliente-form/cliente-form.component';
 import { ClienteListComponent } from './pages/cliente/list/cliente-list/cliente-list.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-<<<<<<< HEAD
-
-
-=======
 import { DependenteFormComponent } from './pages/dependente/form/dependente-form/dependente-form.component';
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
 
 
 
@@ -61,13 +46,9 @@ import { DependenteFormComponent } from './pages/dependente/form/dependente-form
     TituloListComponent,
     TituloFormComponent,
     ClienteFormComponent,
-<<<<<<< HEAD
-    ClienteListComponent
-=======
     ClienteListComponent,
     DependenteFormComponent,
     DependenteListComponent
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
   ],
   imports: [
     BrowserModule,
@@ -86,13 +67,6 @@ import { DependenteFormComponent } from './pages/dependente/form/dependente-form
     TooltipModule.forRoot(),
     BsDatepickerModule.forRoot(),
     MatSelectModule
-<<<<<<< HEAD
-
- 
-
-
-=======
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
   ],
   providers: [AtorFormService],
   bootstrap: [AppComponent]

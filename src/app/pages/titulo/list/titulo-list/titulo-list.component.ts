@@ -9,35 +9,20 @@ import { Titulo } from '../../models/Titulo';
 })
 export class TituloListComponent implements OnInit {
   titulos: Titulo[];
-<<<<<<< HEAD
- 
- 
-=======
 
 
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
   tituloSelecionado:Titulo;
   @ViewChild('deleteModal') deleteModal;
 
   constructor(private tituloService: TituloService) { }
 
   ngOnInit(){
-<<<<<<< HEAD
-   
-    this.tituloService.listar().subscribe(dados => 
-=======
 
     this.tituloService.listar().subscribe(dados =>
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
       {this.titulos = dados,
       console.log(this.titulos);
       }
       );
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
   }
 
   onConfirmDelete(t){
@@ -50,32 +35,17 @@ export class TituloListComponent implements OnInit {
       error => alert('Erro ao remover Titulo!')
     );
 
-<<<<<<< HEAD
-    
-  }
-
-  
-=======
 
   }
 
 
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
   listar(){
     this.tituloService.listar().subscribe(
       (dados) => {
       this.titulos = dados;
-<<<<<<< HEAD
-      
-      }
-    );
-  }
-  
-=======
       }
     );
   }
 
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
 
 }

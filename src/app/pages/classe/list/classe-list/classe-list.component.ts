@@ -15,7 +15,10 @@ export class ClasseListComponent implements OnInit {
 
   ngOnInit() {
     this.classe = new Classe();
-    this.classeService.listar().subscribe(dados => this.classes = dados);
+    this.classeService.listar().subscribe(dados => {
+      this.classes = dados,
+      console.log(this.classes);
+    });
   }
 
   onConfirmDelete(c){

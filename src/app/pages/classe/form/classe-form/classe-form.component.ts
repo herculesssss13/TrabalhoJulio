@@ -24,6 +24,7 @@ export class ClasseFormComponent implements OnInit {
     this.classe = new Classe();
     this.form = this.fb.group({
       nome:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
+      valor:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
       prazoDevolucao:[null]
     });
   }
