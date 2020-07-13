@@ -1,4 +1,4 @@
-import { Dependente } from './../../dependente/models/Dependente';
+import { Dependente } from '../../dependente/models/Dependente';
 
 export class Cliente {
     numInscricao: number;
