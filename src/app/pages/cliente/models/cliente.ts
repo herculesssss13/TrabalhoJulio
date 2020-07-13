@@ -1,5 +1,3 @@
-import { Dependente } from '../../dependente/models/Dependente';
-
 export class Cliente {
     numInscricao: number;
     nome: string;
@@ -9,5 +7,5 @@ export class Cliente {
     cpf: string;
     endereco: string;
     telefone: string;
-    dependentes: Dependente[];
+    id_dependentes2: number;
   }

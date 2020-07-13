@@ -17,18 +17,12 @@
     "@angular/compiler": "~9.1.9",
     "@angular/core": "~9.1.9",
     "@angular/forms": "~9.1.9",
-<<<<<<< HEAD
-=======
     "@angular/localize": "~9.1.9",
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
     "@angular/material": "^9.2.4",
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
-<<<<<<< HEAD
-=======
     "@ng-bootstrap/ng-bootstrap": "^6.2.0",
->>>>>>> 9450c93738cc713926751f48b83ebd2629f269be
     "bootstrap": "^4.5.0",
     "ngx-bootstrap": "^5.6.1",
     "primeicons": "^4.0.0-rc.2",
