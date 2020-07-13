@@ -5,6 +5,8 @@ import { ClasseService } from '../../services/classe.service';
 import { Location} from '@angular/common';
 
 
+
+
 @Component({
   selector: 'app-classe-form',
   templateUrl: './classe-form.component.html',
@@ -59,8 +61,6 @@ export class ClasseFormComponent implements OnInit {
 
   salvar() {
     this.classeServico.salvar(this.classe);
-
-
   }
 
 

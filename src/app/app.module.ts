@@ -1,5 +1,4 @@
-import { ClienteListComponent } from './pages/cliente/list/cliente-list/cliente-list.component';
-import { ClienteFormComponent } from './pages/cliente/form/cliente-form/cliente-form.component';
+import { DependenteListComponent } from './pages/dependente/list/dependente-list/dependente-list.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +23,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ClasseFormComponent } from './pages/classe/form/classe-form/classe-form.component';
 import { ClasseListComponent } from './pages/classe/list/classe-list/classe-list.component';
+import { TituloListComponent } from './pages/titulo/list/titulo-list/titulo-list.component';
+import { TituloFormComponent } from './pages/titulo/form/titulo-form/titulo-form.component';
+import {MatSelectModule} from '@angular/material/select';
+import { ClienteFormComponent } from './pages/cliente/form/cliente-form/cliente-form.component';
+import { ClienteListComponent } from './pages/cliente/list/cliente-list/cliente-list.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DependenteFormComponent } from './pages/dependente/form/dependente-form/dependente-form.component';
 
 
 
@@ -38,8 +43,12 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     DiretorListComponent,
     ClasseFormComponent,
     ClasseListComponent,
+    TituloListComponent,
+    TituloFormComponent,
     ClienteFormComponent,
-    ClienteListComponent
+    ClienteListComponent,
+    DependenteFormComponent,
+    DependenteListComponent
   ],
   imports: [
     BrowserModule,
@@ -55,12 +64,11 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     HttpClientModule,
     InputTextModule,
     ReactiveFormsModule,
+    TooltipModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    TooltipModule.forRoot()
-
+    MatSelectModule
   ],
   providers: [AtorFormService],
-  bootstrap: [AppComponent],
-
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

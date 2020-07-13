@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Cliente } from '../models/Cliente';
 import { Observable } from 'rxjs';
+import { Dependente } from '../models/Dependente';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService {
-  private readonly API = 'http://localhost:8090/socio';
+export class DependenteService {
+  private readonly API = 'http://localhost:8090/dependente';
+  form: any = {};
 
   constructor(private http: HttpClient) { }
+
   listar(){
-    return this.http.get<Cliente[]>(this.API);
+    return this.http.get<Dependente[]>(this.API);
   }
   create(cliente) {
     return this.http.post(this.API, cliente);
   }
 
 
-  salvar(item: Cliente){
-    this.http.post('http://localhost:8090/socio', item).subscribe(
+  salvar(item: Dependente){
+    this.http.post('http://localhost:8090/dependente', item).subscribe(
     res => {
-      alert('Cliente Salvo com Sucesso!');
+      alert('Dependente Salvo com Sucesso!');
     },
     err => {
       console.error(err);

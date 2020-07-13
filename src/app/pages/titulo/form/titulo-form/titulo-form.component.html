@@ -1,0 +1,68 @@
+<p-card>
+    <form class="needs-validation" novalidate [formGroup]= "form">
+      <div class="form-row">
+        <div class="col-md-3 mb-3">
+          <label for="nome">Nome do Título</label>
+          <input type="text" class="form-control" id="nome" formControlName="nome" [ngClass]="{ 'is-invalid':submitted && hasError('nome') }"/>
+          <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['required']">
+            Por favor informe um nome para o Titulo
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="nome">Ano</label>
+            <input type="text" class="form-control" id="ano" formControlName="ano" [ngClass]="{ 'is-invalid':submitted && hasError('ano') }"/>
+            <div class="invalid-feedback" *ngIf="hasError('ano') && hasError('ano')['required']">
+              Por favor informe um ano para o Titulo
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="nome">Sinopse</label>
+            <input type="text" class="form-control" id="sinopse" formControlName="sinopse" [ngClass]="{ 'is-invalid':submitted && hasError('sinopse') }"/>
+            <div class="invalid-feedback" *ngIf="hasError('sinopse') && hasError('sinopse')['required']">
+              Por favor informe ua sinopse para o Titulo
+            </div>
+        </div>
+        
+      </div>
+
+        <div class="form-row">
+            
+                <label for="nome">Atores</label>
+                <mat-form-field appearance="fill">
+                    <mat-select multiple  class="control-label" id="atores" formControlName="atores" >
+                    <mat-option *ngFor="let ator of atores" [value]="ator">{{ator.nome}}</mat-option>
+                    </mat-select>
+                </mat-form-field> 
+            
+            
+                <label for="nome">Diretor</label>
+                <mat-form-field appearance="fill">
+                    <mat-select  class="control-label" id="diretor" formControlName="diretor" >
+                    <mat-option *ngFor="let diretor of diretores" [value]="diretor">{{diretor.nome}}</mat-option>
+                    </mat-select>
+                </mat-form-field> 
+
+                <label for="nome">Classe</label>
+                <mat-form-field appearance="fill">
+                    <mat-select  class="control-label" id="classe" formControlName="classe" >
+                    <mat-option *ngFor="let classe of classes" [value]="classe">{{classe.nome}}</mat-option>
+                    </mat-select>
+                </mat-form-field> 
+                
+                <label for="nome">Categoria</label>
+                <mat-form-field appearance="fill">
+                    <mat-select  class="control-label" id="categoria" formControlName="categoria" >
+                    <mat-option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+          
+        </div>   
+
+      <div style="margin-top: 10px;">
+        <button type="sumit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+        <button type="sumit" class="btn btn-default" (click)="onCancel()">Cancelar</button>
+      </div>
+    </form>
+</p-card>
+    
+    

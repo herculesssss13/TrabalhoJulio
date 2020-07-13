@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MegaMenuItem,MenuItem} from 'primeng/api';
 import { Routes, Router, ActivatedRoute } from '@angular/router';
+import { AtorListComponent } from 'src/app/pages/ator/list/ator-list/ator-list.component';
+import { AtorFormService } from 'src/app/pages/ator/services/ator-form.service';
 
 @Component({
   selector: 'app-menu',
@@ -26,28 +28,29 @@ export class MenuComponent implements OnInit {
                     [
                         {
                             label: 'Cadastro',
-                            items: [
-                                    {label: 'Ator',routerLink:['/lista-atores']},
+                            items: [{label: 'Ator',routerLink:['/lista-atores']},
                                     {label: 'Diretor',routerLink:['/lista-diretores']},
                                     {label: 'Classe',routerLink:['/lista-classe']},
-                                    {label: 'Item'},
-                                    {label: 'Titulo'}
+                                    {label: 'Titulo',routerLink:['/lista-titulos']},
+                                    {label: 'Item'}
+
                                   ]
                         }
                     ]
                 ]
             },
             {
-              label: 'Atendimento Cliente', icon: 'pi pi-fw pi-calendar',
-              items: [
-                  [
-                      {
-                          label: 'Atendimentos',
-                          items: [{label: 'Cliente',routerLink:['/lista-clientes']}]
-                      }
-                  ]
-              ]
-          }
+                label: 'Atendimento Cliente', icon: 'pi pi-fw pi-calendar',
+                items: [
+                    [
+                        {
+                            label: 'Atendimentos',
+                            items: [{label: 'Cliente',routerLink:['/lista-clientes']},
+                                    {label: 'Dependente', routerLink:['/lista-dependentes']}]
+                        }
+                    ]
+                ]
+            }
         ]
     }
 

@@ -1,6 +1,8 @@
+import { DependenteService } from './../../../dependente/services/dependente.service';
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../../models/cliente';
+import { Cliente } from '../../models/Cliente';
 import { ClienteService } from '../../services/cliente.service';
+import { Dependente } from 'src/app/pages/dependente/models/Dependente';
 
 @Component({
   selector: 'app-cliente-list',
@@ -10,8 +12,10 @@ import { ClienteService } from '../../services/cliente.service';
 export class ClienteListComponent implements OnInit {
   clientes: Cliente[];
   cliente: Cliente;
-  clienteSelecionado:Cliente;
-  constructor(private clienteService:ClienteService) { }
+  clienteSelecionado: Cliente;
+
+
+  constructor(private clienteService: ClienteService, private dependenteService: DependenteService) { }
 
   ngOnInit(){
     this.cliente = new Cliente();

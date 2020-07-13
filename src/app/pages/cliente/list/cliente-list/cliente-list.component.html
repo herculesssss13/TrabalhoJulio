@@ -1,69 +1,66 @@
 <div class="card">
-  <div class="card-header">
-    <p-card>
-      <h3 class="p-col-12">Cliente</h3>
-      <span class="ui-float-label">
+    <div class="card-header">
+      <p-card>
+        <h3 class="p-col-12">Cliente</h3>
+        <span class="ui-float-label">
 
 
 
-          <button type="button" class="btn btn-primary" [routerLink]="['/novoCliente']" >Novo Cliente</button>
+            <button type="button" class="btn btn-primary" [routerLink]="['/novoCliente']" >Novo Cliente</button>
 
 
-      </span>
-    </p-card>
+        </span>
+      </p-card>
+    </div>
+
+
+    <div class="card-body">
+      <p-card>
+        <table class="table table-horver">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Data de Nascimento</th>
+              <th>Sexo</th>
+              <th>Ativo</th>
+              <th>cpf</th>
+              <th>telefone</th>
+              <th>endereço</th>
+              <th>Dependentes</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of clientes">
+                <td>{{c.numInscricao}}</td>
+                <td>{{c.nome}}</td>
+                <td>{{c.dataNascimento}}</td>
+                <td>{{c.sexo}}</td>
+                <td>{{c.estahAtivo}}</td>
+                <td>{{c.cpf}}</td>
+                <td>{{c.telefone}}</td>
+                <td>{{c.endereco}}</td>
+                <td>
+                  <div *ngFor="let dependente of cliente.dependentes">{{dependente.nome}}</div>
+                </td>
+                <td>
+                  <span class="float-right">
+                    <button class="btn btn-outline-warning mb-1 btn-sm ">
+                      atualizar
+                    </button>
+
+                    <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onConfirmDelete(c)">
+                      Remover
+                    </button>
+                  </span>
+                </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+      </p-card>
+    </div>
   </div>
-
-
-  <div class="card-body">
-    <p-card>
-      <table class="table table-horver">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>Data de Nascimento</th>
-            <th>Sexo</th>
-            <th>Ativo</th>
-            <th>cpf</th>
-            <th>telefone</th>
-            <th>endereço</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let c of clientes">
-              <td>{{c.numInscricao}}</td>
-              <td>{{c.nome}}</td>
-              <td>{{c.dataNascimento}}</td>
-              <td>{{c.sexo}}</td>
-              <td>{{c.estahAtivo}}</td>
-              <td>{{c.cpf}}</td>
-              <td>{{c.telefone}}</td>
-              <td>{{c.endereco}}</td>
-              <td>
-                <span class="float-right">
-                  <button class="btn btn-outline-warning mb-1 btn-sm ">
-                    atualizar
-                  </button>
-
-                  <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onConfirmDelete(c)">
-                    Remover
-                  </button>
-                </span>
-              </td>
-          </tr>
-
-        </tbody>
-
-      </table>
-    </p-card>
-  </div>
-</div>
-
-
-
-
-
-
-
 
