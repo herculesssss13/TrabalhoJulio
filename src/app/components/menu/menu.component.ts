@@ -45,7 +45,8 @@ export class MenuComponent implements OnInit {
                         {
                             label: 'Atendimentos',
                             items: [{label: 'Cliente',routerLink:['/lista-clientes']},
-                                    {label: 'Dependente', routerLink:['/lista-dependentes']}]
+                                    {label: 'Dependente', routerLink:['/lista-dependentes']},
+                                    {label: 'Alocação', routerLink:['/novaAlocacao']}]
                         }
                     ]
                 ]

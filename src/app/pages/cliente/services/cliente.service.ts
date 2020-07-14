@@ -19,7 +19,7 @@ export class ClienteService {
 
 
   salvar(item: Cliente){
-    this.http.post('http://localhost:8090/cliente', item).subscribe(
+    this.http.post('http://localhost:8090/socio', item).subscribe(
     res => {
       alert('Cliente Salvo com Sucesso!');
     },
