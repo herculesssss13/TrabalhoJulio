@@ -13,6 +13,8 @@ import { ClienteListComponent } from './pages/cliente/list/cliente-list/cliente-
 import { ClienteFormComponent } from './pages/cliente/form/cliente-form/cliente-form.component';
 import { DependenteFormComponent } from './pages/dependente/form/dependente-form/dependente-form.component';
 import { DependenteListComponent } from './pages/dependente/list/dependente-list/dependente-list.component';
+import { ItemFormComponent } from './pages/item/form/item-form/item-form.component';
+import { ItemListComponent } from './pages/item/list/item-list/item-list.component';
 
 const routes: Routes = [
   {
@@ -29,7 +31,11 @@ const routes: Routes = [
       {path: 'lista-clientes', component: ClienteListComponent},
       {path: 'novoCliente', component: ClienteFormComponent},
       {path: 'lista-dependentes', component: DependenteListComponent},
-      {path: 'novoDependente', component: DependenteFormComponent}
+      {path: 'novoDependente', component: DependenteFormComponent},
+      {path: 'novoItem', component: ItemFormComponent},
+      {path: 'lista-itens', component: ItemListComponent}
+      
+      
 
     ]
   }

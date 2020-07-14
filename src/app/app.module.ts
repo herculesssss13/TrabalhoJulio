@@ -30,6 +30,9 @@ import { ClienteFormComponent } from './pages/cliente/form/cliente-form/cliente-
 import { ClienteListComponent } from './pages/cliente/list/cliente-list/cliente-list.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DependenteFormComponent } from './pages/dependente/form/dependente-form/dependente-form.component';
+import { ItemFormComponent } from './pages/item/form/item-form/item-form.component';
+import { ItemListComponent } from './pages/item/list/item-list/item-list.component';
+
 
 
 
@@ -48,7 +51,10 @@ import { DependenteFormComponent } from './pages/dependente/form/dependente-form
     ClienteFormComponent,
     ClienteListComponent,
     DependenteFormComponent,
-    DependenteListComponent
+    DependenteListComponent,
+    ItemFormComponent,
+    ItemListComponent
+
   ],
   imports: [
     BrowserModule,

@@ -32,7 +32,7 @@ export class MenuComponent implements OnInit {
                                     {label: 'Diretor',routerLink:['/lista-diretores']},
                                     {label: 'Classe',routerLink:['/lista-classe']},
                                     {label: 'Titulo',routerLink:['/lista-titulos']},
-                                    {label: 'Item'}
+                                    {label: 'Item',routerLink:['/lista-itens']}
                                   ]
                         }
                     ]
