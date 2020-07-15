@@ -14,9 +14,11 @@ import { Dependente } from 'src/app/pages/dependente/models/Dependente';
 export class ClienteFormComponent implements OnInit {
   currentDate = new Date();
   form: FormGroup;
-  submitted = false;
-  public cliente: Cliente;
+  submitted =false;
+  public cliente:Cliente;
   dependentes: Dependente[];
+
+ 
 
   constructor(private clienteServico: ClienteService, private dependenteService: DependenteService,
      private fb: FormBuilder, private location: Location) { }

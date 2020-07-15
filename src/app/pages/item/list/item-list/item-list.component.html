@@ -1,12 +1,12 @@
 <div class="card">
     <div class="card-header">
       <p-card>
-        <h3 class="p-col-12">Classe</h3>
+        <h3 class="p-col-12">Item</h3>
         <span class="ui-float-label">
           
   
           
-            <button type="button" class="btn btn-primary" [routerLink]="['/novaClasse']" >Nova Classe</button>
+            <button type="button" class="btn btn-primary" [routerLink]="['/novoItem']" >Novo Item</button>
           
           
         </span>  
@@ -19,26 +19,26 @@
         <table class="table table-horver">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Nome</th>
-              <th>Valor</th>
-              <th>Data Devolução</th>
+              <th>Número de Série</th>
+              <th>Título</th>
+              <th>Data de Aquisição</th>
+              <th>Tipo do Item</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let c of classes">
-                <td>{{c.id}}</td>
-                <td>{{c.nome}}</td>
-                <td>{{c.valor}}</td>
-                <td>{{c.prazoDevolucao}}</td>
+            <tr *ngFor="let item of itens">
+                <td>{{item.numSerie}}</td>
+                <td>{{item.titulo.nome}}</td>
+                <td>{{item.dataAquisicao}}</td>
+                <td>{{item.tipo}}</td>
                 <td>
                   <span class="float-right">
                     <button class="btn btn-outline-warning mb-1 btn-sm ">
                       atualizar
                     </button>
                     
-                    <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onConfirmDelete(c)">
+                    <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onConfirmDelete(item)">
                       Remover
                     </button>
                   </span>

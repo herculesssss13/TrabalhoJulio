@@ -32,8 +32,7 @@ export class MenuComponent implements OnInit {
                                     {label: 'Diretor',routerLink:['/lista-diretores']},
                                     {label: 'Classe',routerLink:['/lista-classe']},
                                     {label: 'Titulo',routerLink:['/lista-titulos']},
-                                    {label: 'Item'}
-
+                                    {label: 'Item',routerLink:['/lista-itens']}
                                   ]
                         }
                     ]
@@ -46,7 +45,8 @@ export class MenuComponent implements OnInit {
                         {
                             label: 'Atendimentos',
                             items: [{label: 'Cliente',routerLink:['/lista-clientes']},
-                                    {label: 'Dependente', routerLink:['/lista-dependentes']}]
+                                    {label: 'Dependente', routerLink:['/lista-dependentes']},
+                                    {label: 'Alocação', routerLink:['/lista-alocacao']}]
                         }
                     ]
                 ]

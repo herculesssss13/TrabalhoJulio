@@ -7,7 +7,7 @@ import { Dependente } from '../models/Dependente';
   providedIn: 'root'
 })
 export class DependenteService {
-  private readonly API = 'http://localhost:8090/dependente';
+  private readonly API = 'http://localhost:8090/dependentes';
   form: any = {};
 
   constructor(private http: HttpClient) { }
@@ -21,7 +21,7 @@ export class DependenteService {
 
 
   salvar(item: Dependente){
-    this.http.post('http://localhost:8090/dependente', item).subscribe(
+    this.http.post('http://localhost:8090/dependentes', item).subscribe(
     res => {
       alert('Dependente Salvo com Sucesso!');
     },

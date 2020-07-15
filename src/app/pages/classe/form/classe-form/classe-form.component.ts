@@ -29,6 +29,9 @@ export class ClasseFormComponent implements OnInit {
     });
   }
 
+  
+  
+
 
 
 
@@ -52,6 +55,7 @@ export class ClasseFormComponent implements OnInit {
     this.submitted = false;
     this.form.reset();
     this.location.back();
+  
 
   }
 
@@ -61,6 +65,8 @@ export class ClasseFormComponent implements OnInit {
 
   salvar() {
     this.classeServico.salvar(this.classe);
+
+    
   }
 
 

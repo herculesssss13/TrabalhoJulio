@@ -1,0 +1,59 @@
+<div class="card">
+    <div class="card-header">
+      <p-card>
+        <h3 class="p-col-12">Locação</h3>
+        <span class="ui-float-label">
+
+            <button type="button" class="btn btn-primary" [routerLink]="['/novaAlocacao']" >Nova Locação</button>
+
+        </span>
+      </p-card>
+    </div>
+
+
+    <div class="card-body">
+      <p-card>
+        <table class="table table-horver">
+          <thead>
+            <tr>
+                <th>#</th>
+              <th>Item N.Serie</th>
+              <th>Cliente</th>
+              <th>valorCobrado</th>
+              <th>Data Devolução Prevista</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let loc of alocacoes">
+                <td>{{loc.id}}</td>
+                <td>{{loc.item.numSerie}}</td>
+                <td>{{loc.cliente.nome}}</td>
+                <td>{{loc.valorCobrado}}</td>
+                <td>{{loc.dataDevolucaoPrevista}}</td>
+                <td>
+                  <span class="float-right">
+                    <button class="btn btn-outline-warning mb-1 btn-sm ">
+                      atualizar
+                    </button>
+
+                    <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onConfirmDelete(loc)">
+                      Remover
+                    </button>
+                  </span>
+                </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+      </p-card>
+    </div>
+  </div>
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+<p-card>
+    <form class="needs-validation" novalidate [formGroup]= "form">
+
+
+        <div class="form-row">
+                <label for="nome">Item</label>
+                <mat-form-field appearance="fill">
+                    <mat-select  class="control-label" id="item" formControlName="item" >
+                    <mat-option *ngFor="let item of itens" [value]="item">{{item.numSerie}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <label for="nome">Cliente</label>
+                <mat-form-field appearance="fill">
+                    <mat-select  class="control-label" id="cliente" formControlName="cliente" >
+                    <mat-option *ngFor="let cliente of clientes" [value]="cliente">{{cliente.nome}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <label for="nome">Valor da Alocação</label>
+
+            <input type="text" class="form-control" id="valorCobrado" formControlName="valorCobrado" [ngClass]="{ 'is-invalid':submitted && hasError('valorCobrado') }"/>
+            <div class="invalid-feedback" *ngIf="hasError('valorCobrado') && hasError('valorCobrado')['required']">
+              Por favor informe um valor para a alocação.
+            </div>
+        </div>
+        <br>
+
+
+
+
+        <div class="col-xs-12 col-12 col-md-4 form-group">
+            <label for="datee">Data de Devolução</label>
+            <input type="text"
+                   placeholder="Data de Devolução"
+                   class="form-control"
+                   id = "dataDevolucaoPrevista"
+                   formControlName="dataDevolucaoPrevista"
+                   [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
+                   bsDatepicker>
+        </div>
+        <br>
+
+
+        <br>
+
+
+      <div style="margin-top: 10px;">
+        <button type="sumit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+        <button type="sumit" class="btn btn-default" (click)="onCancel()">Cancelar</button>
+      </div>
+    </form>
+</p-card>
+

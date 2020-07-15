@@ -23,7 +23,6 @@ export class TituloListComponent implements OnInit {
       console.log(this.titulos);
       }
       );
-
   }
 
   onConfirmDelete(t){

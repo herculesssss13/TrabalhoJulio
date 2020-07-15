@@ -9,9 +9,12 @@ import { Observable } from 'rxjs';
 export class ClienteService {
   private readonly API = 'http://localhost:8090/socio';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http:HttpClient) { }
   listar(){
     return this.http.get<Cliente[]>(this.API);
+  }
+  listar2(){
+    return this.http.get<Cliente[]>('http://localhost:8090/socio/listarTudo');
   }
   create(cliente) {
     return this.http.post(this.API, cliente);
