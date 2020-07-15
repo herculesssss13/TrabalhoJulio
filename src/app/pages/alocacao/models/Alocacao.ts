@@ -4,7 +4,7 @@ import { Cliente } from '../../cliente/models/Cliente';
 export class Alocacao{
     id:number;
     item:Item;
-    socio:Cliente;
-    valor:number;
-    dataDevolucao:Date;
+    Cliente:Cliente;
+    valorCobrado:number;
+    dataDevolucaoPrevista:Date;
 }

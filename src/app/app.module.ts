@@ -33,6 +33,7 @@ import { DependenteFormComponent } from './pages/dependente/form/dependente-form
 import { ItemFormComponent } from './pages/item/form/item-form/item-form.component';
 import { ItemListComponent } from './pages/item/list/item-list/item-list.component';
 import { AlocacaoFormComponent } from './pages/alocacao/form/alocacao-form/alocacao-form.component';
+import { AlocacaoListComponent } from './pages/alocacao/list/alocacao-list/alocacao-list.component';
 
 
 
@@ -55,7 +56,8 @@ import { AlocacaoFormComponent } from './pages/alocacao/form/alocacao-form/aloca
     DependenteListComponent,
     ItemFormComponent,
     ItemListComponent,
-    AlocacaoFormComponent
+    AlocacaoFormComponent,
+    AlocacaoListComponent
 
   ],
   imports: [

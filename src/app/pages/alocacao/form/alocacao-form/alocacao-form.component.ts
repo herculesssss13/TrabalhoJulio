@@ -30,9 +30,9 @@ export class AlocacaoFormComponent implements OnInit {
     this.alocacao = new Alocacao();
     this.form = this.fb.group({
       item:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
-      cliente:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
-      valor:[null],
-      prazoDevolucao:[null]
+      idCliente:[null],
+      valorCobrado:[null],
+      dataDevolucaoPrevista:[null]
     });
 
     this.clienteService.listar().subscribe(dados => this.clientes = dados);

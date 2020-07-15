@@ -12,8 +12,8 @@
 
                 <label for="nome">Cliente</label>
                 <mat-form-field appearance="fill">
-                    <mat-select  class="control-label" id="cliente" formControlName="cliente" >
-                    <mat-option *ngFor="let cliente of clientes" [value]="cliente">{{cliente.nome}}</mat-option>
+                    <mat-select  class="control-label" id="idCliente" formControlName="idCliente" >
+                    <mat-option *ngFor="let cliente of clientes" [value]="cliente.id">{{cliente.nome}}</mat-option>
                     </mat-select>
                 </mat-form-field> 
         </div>  
@@ -21,8 +21,8 @@
         <div class="col-md-3 mb-3">
             <label for="nome">Valor da Alocação</label>
 
-            <input type="text" class="form-control" id="valor" formControlName="valor" [ngClass]="{ 'is-invalid':submitted && hasError('valor') }"/>
-            <div class="invalid-feedback" *ngIf="hasError('valor') && hasError('valor')['required']">
+            <input type="text" class="form-control" id="valorCobrado" formControlName="valorCobrado" [ngClass]="{ 'is-invalid':submitted && hasError('valorCobrado') }"/>
+            <div class="invalid-feedback" *ngIf="hasError('valorCobrado') && hasError('valorCobrado')['required']">
               Por favor informe um valor para a alocação.
             </div>
         </div>
@@ -36,8 +36,8 @@
             <input type="text"
                    placeholder="Data de Devolução"
                    class="form-control"
-                   id = "prazoDevolucao"
-                   formControlName="prazoDevolucao"
+                   id = "dataDevolucaoPrevista"
+                   formControlName="dataDevolucaoPrevista"
                    [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
                    bsDatepicker>
         </div>

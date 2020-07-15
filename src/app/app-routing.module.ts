@@ -16,6 +16,7 @@ import { DependenteListComponent } from './pages/dependente/list/dependente-list
 import { ItemFormComponent } from './pages/item/form/item-form/item-form.component';
 import { ItemListComponent } from './pages/item/list/item-list/item-list.component';
 import { AlocacaoFormComponent } from './pages/alocacao/form/alocacao-form/alocacao-form.component';
+import { AlocacaoListComponent } from './pages/alocacao/list/alocacao-list/alocacao-list.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,9 @@ const routes: Routes = [
       {path: 'novoDependente', component: DependenteFormComponent},
       {path: 'novoItem', component: ItemFormComponent},
       {path: 'lista-itens', component: ItemListComponent},
-      {path: 'novaAlocacao', component: AlocacaoFormComponent}
+      {path: 'novaAlocacao', component: AlocacaoFormComponent},
+      {path: 'lista-alocacao', component: AlocacaoListComponent}
+      
       
       
 
