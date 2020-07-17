@@ -1,5 +1,6 @@
 <p-card>
     <form class="needs-validation" novalidate [formGroup]= "form">
+      <p-card>
       <div class="form-row">
         <div class="col-md-3 mb-3">
           <label for="nome">Nome do Cliente</label>
@@ -45,8 +46,8 @@
         <div class="form-row">
           <div class="col-md-3 mb-3">
             <label for="cpf">Cpf</label>
-            <input type="text" class="form-control" id="cpf" formControlName="cpf" [ngClass]="{ 'is-invalid':submitted && hasError('cpf') }"/>
-            <div class="invalid-feedback" *ngIf="hasError('cpf') && hasError('cpf')['required']">
+            <input type="text" class="form-control" id="cpf" formControlName="cpf" />
+            <div >
               Por favor informe um cpf.
             </div>
           </div>
@@ -87,14 +88,20 @@
           <br>
       </div>
 
+      <p-card>
+        <div style="margin-top: 10px;">
+          <button type="sumit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+          <button type="sumit" class="btn btn-default" (click)="onCancel()">Cancelar</button>
+        </div>
+      </p-card>
 
-      <div style="margin-top: 10px;">
-        <button type="sumit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
-        <button type="sumit" class="btn btn-default" (click)="onCancel()">Cancelar</button>
-      </div>
-  
-  
-
+    </p-card>
+      
+      <p-card>
+        <span class="ui-float-label">
+          <button type="button" class="btn btn-primary" [routerLink]="['/novoDependente']" >Novo Dependente</button>
+      </span>
+      </p-card>
 
     </form>
     </p-card>

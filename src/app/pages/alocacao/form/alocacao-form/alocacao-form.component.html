@@ -13,7 +13,7 @@
                 <label for="nome">Cliente</label>
                 <mat-form-field appearance="fill">
                     <mat-select  class="control-label" id="idCliente" formControlName="idCliente" >
-                    <mat-option *ngFor="let cliente of clientes" [value]="cliente.id">{{cliente.nome}}</mat-option>
+                    <mat-option *ngFor="let cliente of clientes" [value]="cliente">{{cliente.nome}}</mat-option>
                     </mat-select>
                 </mat-form-field> 
         </div>  

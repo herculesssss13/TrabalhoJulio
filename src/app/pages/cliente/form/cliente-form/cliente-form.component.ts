@@ -26,7 +26,7 @@ export class ClienteFormComponent implements OnInit {
   ngOnInit() {
     this.cliente = new Cliente();
     this.form = this.fb.group({
-      nome:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
+      nome:[null],
       dataNascimento:[null],
       sexo:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(1)]],
       estahAtivo:[null],
@@ -47,7 +47,8 @@ export class ClienteFormComponent implements OnInit {
       this.clienteServico.create(this.form.value).subscribe(
         sucesso=>{
           alert('Cliente Salvo com Sucesso!');
-          this.location.back();
+          this.form.reset();
+          //this.location.back();
         },
         error => console.error(error),
         ()=> console.log('Request completa')

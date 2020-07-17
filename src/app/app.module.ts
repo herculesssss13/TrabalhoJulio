@@ -34,6 +34,7 @@ import { ItemFormComponent } from './pages/item/form/item-form/item-form.compone
 import { ItemListComponent } from './pages/item/list/item-list/item-list.component';
 import { AlocacaoFormComponent } from './pages/alocacao/form/alocacao-form/alocacao-form.component';
 import { AlocacaoListComponent } from './pages/alocacao/list/alocacao-list/alocacao-list.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 
@@ -76,7 +77,8 @@ import { AlocacaoListComponent } from './pages/alocacao/list/alocacao-list/aloca
     ReactiveFormsModule,
     TooltipModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    MatSelectModule
+    MatSelectModule,
+    MatChipsModule
   ],
   providers: [AtorFormService],
   bootstrap: [AppComponent]
