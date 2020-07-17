@@ -1,6 +1,5 @@
 <p-card>
     <form class="needs-validation" novalidate [formGroup]= "form">
-      
 
         <div class="form-row">
                 <label for="nome">Item</label>
@@ -8,15 +7,15 @@
                     <mat-select  class="control-label" id="item" formControlName="item" >
                     <mat-option *ngFor="let item of itens" [value]="item">{{item.numSerie}}</mat-option>
                     </mat-select>
-                </mat-form-field> 
+                </mat-form-field>
 
                 <label for="nome">Cliente</label>
                 <mat-form-field appearance="fill">
-                    <mat-select  class="control-label" id="idCliente" formControlName="idCliente" >
+                    <mat-select  class="control-label" id="cliente" formControlName="cliente" >
                     <mat-option *ngFor="let cliente of clientes" [value]="cliente">{{cliente.nome}}</mat-option>
                     </mat-select>
-                </mat-form-field> 
-        </div>  
+                </mat-form-field>
+        </div>
 
         <div class="col-md-3 mb-3">
             <label for="nome">Valor da Alocação</label>
@@ -42,8 +41,8 @@
                    bsDatepicker>
         </div>
         <br>
-        
-        
+
+
         <br>
 
 
@@ -53,4 +52,3 @@
       </div>
     </form>
 </p-card>
-    

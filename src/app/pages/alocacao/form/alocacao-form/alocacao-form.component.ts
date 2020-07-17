@@ -30,12 +30,12 @@ export class AlocacaoFormComponent implements OnInit {
     this.alocacao = new Alocacao();
     this.form = this.fb.group({
       item:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
-      idCliente:[null],
+      cliente:[null],
       valorCobrado:[null],
       dataDevolucaoPrevista:[null]
     });
 
-    this.clienteService.listar().subscribe(dados => this.clientes = dados);
+    this.clienteService.listar2().subscribe(dados => this.clientes = dados);
     this.itemService.listar().subscribe(dados => this.itens = dados);
   }
 
@@ -59,7 +59,6 @@ export class AlocacaoFormComponent implements OnInit {
     this.submitted = false;
     this.form.reset();
     this.location.back();
-  
 
   }
 
@@ -69,8 +68,6 @@ export class AlocacaoFormComponent implements OnInit {
 
   salvar() {
     this.alocacaoService.salvar(this.alocacao);
-
-    
   }
 
 }

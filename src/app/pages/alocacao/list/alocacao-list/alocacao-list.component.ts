@@ -8,8 +8,8 @@ import { AlocacaoService } from '../../services/alocacao.service';
   styleUrls: ['./alocacao-list.component.css']
 })
 export class AlocacaoListComponent implements OnInit {
-  alocacao:Alocacao;
-  alocacoes:Alocacao[];
+  alocacao: Alocacao;
+  alocacoes: Alocacao[];
   alocacaoSelecionada: Alocacao;
 
   constructor(private alocacaoService: AlocacaoService) { }
@@ -33,7 +33,6 @@ export class AlocacaoListComponent implements OnInit {
     );
   }
 
-  
   listar(){
     this.alocacaoService.listar().subscribe(
       (dados) => {
@@ -47,6 +46,5 @@ export class AlocacaoListComponent implements OnInit {
     this.listar();
   }
 
-  
 
 }

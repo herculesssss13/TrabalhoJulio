@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AlocacaoService {
   private readonly API = 'http://localhost:8090/locacao';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 
   listar(){

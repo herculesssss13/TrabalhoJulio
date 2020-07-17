@@ -13,6 +13,9 @@ export class ClienteService {
   listar(){
     return this.http.get<Cliente[]>(this.API);
   }
+  listar2(){
+    return this.http.get<Cliente[]>('http://localhost:8090/socio/listarTudo');
+  }
   create(cliente) {
     return this.http.post(this.API, cliente);
   }
