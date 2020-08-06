@@ -3,6 +3,8 @@ import { Diretor } from './../../models/Diretor';
 import { FormGroup, FormBuilder, MaxLengthValidator, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Location} from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { map, switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -18,29 +20,39 @@ export class DiretorFormComponent implements OnInit {
   form: FormGroup;
   submitted =false;
 
-  constructor(private diretorServico:DiretorService,private fb:FormBuilder,private location:Location) { }
+  constructor(private diretorServico:DiretorService,private fb:FormBuilder,private location:Location,private route:ActivatedRoute) { }
 
-  ngOnInit(): void {
-    this.exibir = false;
-    this.header = '';
-    this.diretor = new Diretor();
+  ngOnInit(){
+    const diretor = this.route.snapshot.data['diretor'];
+
+    //this.diretor = new Diretor();
     this.form = this.fb.group({
-      nome:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]]
+      id:[diretor.id],
+      nome:[diretor.nome,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]]
     });
    
   }
+
+  
 
   onSubmit(){
     this.submitted = true;
     console.log(this.form.value);
     if(this.form.valid){
-      this.diretorServico.create(this.form.value).subscribe(
-        sucesso=>{
-          alert('Diretor Salvo com Sucesso!');
+      let MgsSucesso = 'Diretor Criado com Sucesso!';
+      let MgsError = 'Erro ao Criar Diretor,tente novamente!';
+
+      if(this.form.value.id){
+        MgsSucesso = 'Diretor Alterado com Sucesso!';
+        MgsError = 'Erro ao atualizar Diretor,tente novamente!';
+      }
+
+      this.diretorServico.save(this.form.value).subscribe(
+        sucesso =>{
+          alert(MgsSucesso);
           this.location.back();
         },
-        error => console.error(error),
-        ()=> console.log('Request completa')
+        error => console.error(MgsError)
       );
     }
   }

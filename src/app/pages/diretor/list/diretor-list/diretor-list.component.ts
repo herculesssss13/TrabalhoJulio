@@ -7,6 +7,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import { FormGroup } from '@angular/forms';
 import { preserveWhitespacesDefault } from '@angular/compiler';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Router } from '@angular/router';
 
 
 
@@ -26,7 +27,7 @@ export class DiretorListComponent implements OnInit {
   diretorSelecionado:Diretor;
   @ViewChild('deleteModal') deleteModal;
 
-  constructor(private diretorService:DiretorService,
+  constructor(private diretorService:DiretorService,private router : Router
              ) { }
 
   ngOnInit(){
@@ -62,7 +63,9 @@ export class DiretorListComponent implements OnInit {
     this.listar();
   }
 
-  
+  onEdit(id){
+    this.router.navigate(['diretor',id]);
+  }
 
     
 

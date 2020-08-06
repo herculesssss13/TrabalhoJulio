@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Classe } from '../models/Classe';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class ClasseService {
   listar(){
     return this.http.get<Classe[]>(this.API);
   }
-  create(classe) {
+  private create(classe) {
     return this.http.post(this.API, classe);
   }
 
@@ -31,8 +32,8 @@ export class ClasseService {
     );
   }
 
-  update(item: any): Observable<any> {
-    return this.http.put<any>(`${this.API}`, item);
+  private update(classe){
+    return this.http.put(`${this.API}/${classe.id}`, classe).pipe(take(1));
   }
 
   show(id: number): Observable<any> {
@@ -41,5 +42,16 @@ export class ClasseService {
 
   remove(id){
     return this.http.delete(`${this.API}/${id}`);
+  }
+
+  loadById(id){
+    return this.http.get<Classe>(`${this.API}/${id}`);
+  }
+
+  save(classe){
+    if(classe.id){
+      return this.update(classe);
+    }
+    return this.create(classe);
   }
 }

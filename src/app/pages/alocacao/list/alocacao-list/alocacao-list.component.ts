@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Alocacao } from '../../models/Alocacao';
 import { AlocacaoService } from '../../services/alocacao.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alocacao-list',
@@ -12,7 +13,7 @@ export class AlocacaoListComponent implements OnInit {
   alocacoes: Alocacao[];
   alocacaoSelecionada: Alocacao;
 
-  constructor(private alocacaoService: AlocacaoService) { }
+  constructor(private alocacaoService: AlocacaoService,private router : Router) { }
 
   ngOnInit() {
     this.alocacao = new Alocacao();
@@ -44,6 +45,10 @@ export class AlocacaoListComponent implements OnInit {
   salvar() {
     this.alocacaoService.salvar(this.alocacao);
     this.listar();
+  }
+
+  onEdit(id){
+    this.router.navigate(['alocacao',id]);
   }
 
 

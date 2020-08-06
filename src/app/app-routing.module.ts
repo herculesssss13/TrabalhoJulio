@@ -17,30 +17,117 @@ import { ItemFormComponent } from './pages/item/form/item-form/item-form.compone
 import { ItemListComponent } from './pages/item/list/item-list/item-list.component';
 import { AlocacaoFormComponent } from './pages/alocacao/form/alocacao-form/alocacao-form.component';
 import { AlocacaoListComponent } from './pages/alocacao/list/alocacao-list/alocacao-list.component';
+import { AtorResolverGuard } from './pages/ator/guards/ator.guard';
+import { DiretorResolverGuard } from './pages/diretor/guards/diretor.guard';
+import { ClasseResolverGuard } from './pages/classe/guards/classe.guard';
+import { TituloResolverGuard } from './pages/titulo/guards/titulo.guard';
+import { ClienteResolverGuard } from './pages/cliente/guards/cliente.guard';
+import { DependenteResolverGuard } from './pages/dependente/guards/dependente.guard';
+import { ItemResolverGuard } from './pages/item/guards/item.guard';
+import { AlocacaoResolverGuard } from './pages/alocacao/guards/alocacao.guard';
 
 const routes: Routes = [
   {
-    path: "",component: MenuComponent,
-    children:[
-      {path: "lista-atores", component: AtorListComponent},
-      {path: "novoAtor", component:  AtorFormComponent},
-      {path: "lista-diretores", component: DiretorListComponent},
-      {path: 'novoDiretor', component: DiretorFormComponent},
-      {path: 'lista-classe', component: ClasseListComponent},
-      {path: 'novaClasse', component: ClasseFormComponent},
-      {path: 'lista-titulos', component: TituloListComponent},
-      {path: 'novoTitulo', component: TituloFormComponent},
-      {path: 'lista-clientes', component: ClienteListComponent},
-      {path: 'novoCliente', component: ClienteFormComponent},
-      {path: 'lista-dependentes', component: DependenteListComponent},
-      {path: 'novoDependente', component: DependenteFormComponent},
-      {path: 'novoItem', component: ItemFormComponent},
-      {path: 'lista-itens', component: ItemListComponent},
-      {path: 'novaAlocacao', component: AlocacaoFormComponent},
-      {path: 'lista-alocacao', component: AlocacaoListComponent}
-      
-      
-      
+    path: "", component: MenuComponent,
+    children: [
+      { path: "lista-atores", component: AtorListComponent },
+      {
+        path: "novoAtor", component: AtorFormComponent, resolve: {
+          ator: AtorResolverGuard
+        }
+      },
+      {
+        path: "ator/:id", component: AtorFormComponent, resolve: {
+          ator: AtorResolverGuard
+        }
+      },
+
+      { path: "lista-diretores", component: DiretorListComponent },
+      {
+        path: 'novoDiretor', component: DiretorFormComponent, resolve: {
+          diretor: DiretorResolverGuard
+        }
+      },
+      {
+        path: 'diretor/:id', component: DiretorFormComponent, resolve: {
+          diretor: DiretorResolverGuard
+        }
+      },
+
+      { path: 'lista-classe', component: ClasseListComponent },
+      {
+        path: 'novaClasse', component: ClasseFormComponent, resolve: {
+          classe: ClasseResolverGuard
+        }
+      },
+      {
+        path: 'classe/:id', component: ClasseFormComponent, resolve: {
+          classe: ClasseResolverGuard
+        }
+      },
+
+      { path: 'lista-titulos', component: TituloListComponent },
+      {
+        path: 'novoTitulo', component: TituloFormComponent, resolve: {
+          titulo: TituloResolverGuard
+        }
+      },
+      {
+        path: 'titulo/:id', component: TituloFormComponent, resolve: {
+          titulo: TituloResolverGuard
+        }
+      },
+
+      { path: 'lista-clientes', component: ClienteListComponent },
+      {
+        path: 'novoCliente', component: ClienteFormComponent, resolve: {
+          cliente: ClienteResolverGuard
+        }
+      },
+      {
+        path: 'cliente/:id', component: ClienteFormComponent, resolve: {
+          cliente: ClienteResolverGuard
+        }
+      },
+
+      { path: 'lista-dependentes', component: DependenteListComponent },
+      {
+        path: 'novoDependente', component: DependenteFormComponent, resolve: {
+          dependente: DependenteResolverGuard
+        }
+      },
+      {
+        path: 'dependente/:id', component: DependenteFormComponent, resolve: {
+          dependente: DependenteResolverGuard
+        }
+      },
+
+      {
+        path: 'novoItem', component: ItemFormComponent, resolve: {
+          item: ItemResolverGuard
+        }
+      },
+      { path: 'lista-itens', component: ItemListComponent },
+      {
+        path: 'item/:id', component: ItemFormComponent, resolve: {
+          item: ItemResolverGuard
+        }
+      },
+
+      {
+        path: 'novaAlocacao', component: AlocacaoFormComponent, resolve: {
+          alocacao: AlocacaoResolverGuard
+        }
+      },
+      { path: 'lista-alocacao', component: AlocacaoListComponent },
+      {
+        path: 'alocacao/:id', component: AlocacaoFormComponent, resolve: {
+          alocacao: AlocacaoResolverGuard
+        }
+      },
+
+
+
 
     ]
   }

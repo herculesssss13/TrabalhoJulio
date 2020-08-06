@@ -5,6 +5,8 @@ import { Titulo } from 'src/app/pages/titulo/models/Titulo';
 import { ItemService } from '../../services/item.service';
 import { TituloService } from 'src/app/pages/titulo/services/titulo.service';
 import { Location} from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-item-form',
@@ -22,30 +24,43 @@ export class ItemFormComponent implements OnInit {
   constructor(private itemService : ItemService, 
               private tituloService : TituloService,
               private fb:FormBuilder,
-              private location:Location) { }
+              private location:Location,
+              private route:ActivatedRoute) { }
 
   ngOnInit(){
     
+    const item = this.route.snapshot.data['item'];
+
     this.form = this.fb.group({
-      titulo:[null],
-      tipo:[null],
-      dataAquisicao:[null]
+      numSerie:[item.numSerie],
+      titulo:[item.titulo],
+      tipo:[item.tipo],
+      dataAquisicao:[item.dataAquisicao]
     });
 
     this.tituloService.listar().subscribe(dados => this.titulos = dados);
   }
 
+
+
   onSubmit(){
     this.submitted = true;
     console.log(this.form.value);
     if(this.form.valid){
-      this.itemService.create(this.form.value).subscribe(
-        sucesso=>{
-          alert('Item Salvo com Sucesso!');
+      let MgsSucesso = 'Item Criado com Sucesso!';
+      let MgsError = 'Erro ao Criar Item,tente novamente!';
+
+      if(this.form.value.numSerie){
+        MgsSucesso = 'Item Alterado com Sucesso!';
+        MgsError = 'Erro ao atualizar Item,tente novamente!';
+      }
+
+      this.itemService.save(this.form.value).subscribe(
+        sucesso =>{
+          alert(MgsSucesso);
           this.location.back();
         },
-        error => console.error(error),
-        ()=> console.log('Request completa')
+        error => console.error(MgsError)
       );
     }
   }

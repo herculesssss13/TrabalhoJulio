@@ -76,17 +76,7 @@
         </div>
       </div>
 
-      <div>
-        <div class="form-row">
-          <label for="nome">Dependentes</label>
-                <mat-form-field appearance="fill">
-                    <mat-select multiple  class="control-label" id="dependentes" formControlName="dependentes" >
-                    <mat-option *ngFor="let dependente of dependentes" [value]="dependente">{{dependente.nome}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-          </div>
-          <br>
-      </div>
+      
 
       <p-card>
         <div style="margin-top: 10px;">

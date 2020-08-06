@@ -5,6 +5,8 @@ import { Cliente } from '../../models/Cliente';
 import { ClienteService } from '../../services/cliente.service';
 import { Location} from '@angular/common';
 import { Dependente } from 'src/app/pages/dependente/models/Dependente';
+import { ActivatedRoute } from '@angular/router';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cliente-form',
@@ -16,42 +18,48 @@ export class ClienteFormComponent implements OnInit {
   form: FormGroup;
   submitted =false;
   public cliente:Cliente;
-  dependentes: Dependente[];
 
  
 
   constructor(private clienteServico: ClienteService, private dependenteService: DependenteService,
-     private fb: FormBuilder, private location: Location) { }
+     private fb: FormBuilder, private location: Location,private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.cliente = new Cliente();
+    const cliente = this.route.snapshot.data['cliente'];
+
+    //this.cliente = new Cliente();
     this.form = this.fb.group({
-      nome:[null],
-      dataNascimento:[null],
-      sexo:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(1)]],
-      estahAtivo:[null],
-      cpf:[null],
-      endereco:[null],
-      telefone:[null],
-      dependentes: [null]
+      numInscricao:[cliente.numInscricao],
+      nome:[cliente.nome],
+      dataNascimento:[cliente.dataNascimento],
+      sexo:[cliente.sexo,[Validators.required, Validators.minLength(1),Validators.maxLength(1)]],
+      estahAtivo:[cliente.estahAtivo],
+      cpf:[cliente.cpf],
+      endereco:[cliente.endereco],
+      telefone:[cliente.telefone]
     });
-
-
-    this.dependenteService.listar().subscribe(dados => this.dependentes = dados);
   }
+
+  
 
   onSubmit(){
     this.submitted = true;
     console.log(this.form.value);
     if(this.form.valid){
-      this.clienteServico.create(this.form.value).subscribe(
-        sucesso=>{
-          alert('Cliente Salvo com Sucesso!');
-          this.form.reset();
-          //this.location.back();
+      let MgsSucesso = 'Cliente Criado com Sucesso!';
+      let MgsError = 'Erro ao Criar Cliente,tente novamente!';
+
+      if(this.form.value.numInscricao){
+        MgsSucesso = 'Cliente Alterado com Sucesso!';
+        MgsError = 'Erro ao atualizar Cliente,tente novamente!';
+      }
+
+      this.clienteServico.save(this.form.value).subscribe(
+        sucesso =>{
+          alert(MgsSucesso);
+          this.location.back();
         },
-        error => console.error(error),
-        ()=> console.log('Request completa')
+        error => console.error(MgsError)
       );
     }
   }
@@ -67,9 +75,7 @@ export class ClienteFormComponent implements OnInit {
     return this.form.get(field).errors;
   }
 
-  salvar() {
-    this.clienteServico.salvar(this.cliente);
-  }
+ 
 
 
 

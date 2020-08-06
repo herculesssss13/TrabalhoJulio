@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Location} from '@angular/common';
 import { DependenteService } from '../../services/dependente.service';
 import { Dependente } from '../../models/Dependente';
+import { ClienteService } from 'src/app/pages/cliente/services/cliente.service';
+import { Cliente } from 'src/app/pages/cliente/models/Cliente';
+import { ActivatedRoute } from '@angular/router';
+import { map, switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -15,29 +19,51 @@ export class DependenteFormComponent implements OnInit {
   form: FormGroup;
   submitted = false;
   public dependente: Dependente;
-  constructor(private dependenteServico: DependenteService, private fb: FormBuilder, private location: Location) { }
+  socios:Cliente[];
+  constructor(private dependenteServico: DependenteService, 
+              private fb: FormBuilder, 
+              private location: Location,
+              private clienteServico:ClienteService,
+              private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.dependente = new Dependente();
+    const dependente = this.route.snapshot.data['dependente'];
+
+    //this.dependente = new Dependente();
     this.form = this.fb.group({
-      nome:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
-      dataNascimento:[null],
-      sexo:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(1)]],
-      estahAtivo:[null],
+      numInscricao:[dependente.numInscricao],
+      nome:[dependente.nome,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
+      dataNascimento:[dependente.dataNascimento],
+      sexo:[dependente.sexo,[Validators.required, Validators.minLength(1),Validators.maxLength(1)]],
+      estahAtivo:[dependente.estahAtivo],
+      socio:[dependente.socio]
     });
+
+    this.clienteServico.listar().subscribe(dados => 
+      {this.socios = dados;
+        console.log(this.socios);
+      });
   }
+
 
   onSubmit(){
     this.submitted = true;
     console.log(this.form.value);
     if(this.form.valid){
-      this.dependenteServico.create(this.form.value).subscribe(
-        sucesso=>{
-          alert('Dependente Salvo com Sucesso!');
+      let MgsSucesso = 'Dependente Criado com Sucesso!';
+      let MgsError = 'Erro ao Criar Dependente,tente novamente!';
+
+      if(this.form.value.numInscricao){
+        MgsSucesso = 'Dependente Alterado com Sucesso!';
+        MgsError = 'Erro ao atualizar Dependente,tente novamente!';
+      }
+
+      this.dependenteServico.save(this.form.value).subscribe(
+        sucesso =>{
+          alert(MgsSucesso);
           this.location.back();
         },
-        error => console.error(error),
-        ()=> console.log('Request completa')
+        error => console.error(MgsError)
       );
     }
   }

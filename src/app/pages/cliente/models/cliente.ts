@@ -9,5 +9,5 @@ export class Cliente {
     cpf: string;
     endereco: string;
     telefone: string;
-    dependentes: Dependente[];
+    
   }

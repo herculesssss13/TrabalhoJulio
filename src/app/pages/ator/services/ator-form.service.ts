@@ -2,6 +2,7 @@ import { Ator } from './../models/Ator';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AtorFormService {
    listar(){
     return this.http.get<Ator[]>(this.API);
   }
-  create(ator) {
+  private create(ator) {
     return this.http.post(this.API, ator);
   }
 
@@ -33,8 +34,8 @@ export class AtorFormService {
     );
   }
 
-  update(item: any): Observable<any> {
-    return this.http.put<any>(`${this.API}`, item);
+  private update(ator){
+    return this.http.put(`${this.API}/${ator.id}`, ator).pipe(take(1));
   }
 
   show(id: number): Observable<any> {
@@ -43,5 +44,16 @@ export class AtorFormService {
 
   remove(id){
     return this.http.delete(`${this.API}/${id}`);
+  }
+
+  loadById(id){
+    return this.http.get<Ator>(`${this.API}/${id}`);
+  }
+
+  save(ator){
+    if(ator.id){
+      return this.update(ator);
+    }
+    return this.create(ator);
   }
 }

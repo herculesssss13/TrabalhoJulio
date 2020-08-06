@@ -1,6 +1,7 @@
 import { Dependente } from '../../models/Dependente';
 import { Component, OnInit } from '@angular/core';
 import { DependenteService } from '../../services/dependente.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dependente-list',
@@ -11,7 +12,7 @@ export class DependenteListComponent implements OnInit {
   dependentes: Dependente[];
   dependente: Dependente;
   dependenteSelecionado: Dependente;
-  constructor(private dependenteService: DependenteService) { }
+  constructor(private dependenteService: DependenteService,private router : Router) { }
 
   ngOnInit() {
     this.dependente = new Dependente();
@@ -43,4 +44,7 @@ export class DependenteListComponent implements OnInit {
     this.listar();
   }
 
+  onEdit(id){
+    this.router.navigate(['dependente',id]);
+  }
 }

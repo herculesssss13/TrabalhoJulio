@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Item } from '../../models/Item';
 import { ItemService } from '../../services/item.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item-list',
@@ -12,7 +13,7 @@ export class ItemListComponent implements OnInit {
   itens:Item[];
   itemSelecionado:Item;
 
-  constructor(private itemService :ItemService) { }
+  constructor(private itemService :ItemService,private router : Router) { }
 
   ngOnInit(){
 
@@ -43,6 +44,10 @@ export class ItemListComponent implements OnInit {
       this.itens = dados;
       }
     );
+  }
+
+  onEdit(id){
+    this.router.navigate(['item',id]);
   }
 
 

@@ -27,7 +27,7 @@
               <th>cpf</th>
               <th>telefone</th>
               <th>endereço</th>
-              <th>Dependentes</th>
+              
               <th></th>
             </tr>
           </thead>
@@ -41,12 +41,10 @@
                 <td>{{c.cpf}}</td>
                 <td>{{c.telefone}}</td>
                 <td>{{c.endereco}}</td>
-                <td>
-                  <div *ngFor="let dependente of c.dependentes">{{dependente.nome}}</div>
-                </td>
+                
                 <td>
                   <span class="float-right">
-                    <button class="btn btn-outline-warning mb-1 btn-sm ">
+                    <button class="btn btn-outline-warning mb-1 btn-sm " (click)="onEdit(c.numInscricao)">
                       atualizar
                     </button>
                     <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onConfirmDelete(c)">

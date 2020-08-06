@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Alocacao } from '../models/Alocacao';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AlocacaoService {
   listar(){
     return this.http.get<Alocacao[]>(this.API);
   }
-  create(alocacao) {
+  private create(alocacao) {
     return this.http.post(this.API, alocacao);
   }
 
@@ -31,8 +32,8 @@ export class AlocacaoService {
     );
   }
 
-  update(item: any): Observable<any> {
-    return this.http.put<any>(`${this.API}`, item);
+  private update(alocacao){
+    return this.http.put(`${this.API}/${alocacao.id}`, alocacao).pipe(take(1));
   }
 
   show(id: number): Observable<any> {
@@ -41,5 +42,16 @@ export class AlocacaoService {
 
   remove(id){
     return this.http.delete(`${this.API}/${id}`);
+  }
+
+  loadById(id){
+    return this.http.get<Alocacao>(`${this.API}/${id}`);
+  }
+
+  save(alocacao){
+    if(alocacao.id){
+      return this.update(alocacao);
+    }
+    return this.create(alocacao);
   }
 }

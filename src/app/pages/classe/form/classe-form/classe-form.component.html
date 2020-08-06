@@ -19,16 +19,13 @@
             </div>
         </div>
         <br>
-
+        
         <div class="col-xs-12 col-12 col-md-4 form-group">
           <label for="datee">Data de Devolução</label>
-          <input type="text"
-                 placeholder="Data de Devolução"
-                 class="form-control"
-                 id = "prazoDevolucao"
-                 formControlName="prazoDevolucao"
-                 [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
-                 bsDatepicker>
+          <input type="text" class="form-control" id="prazoDevolucao" formControlName="prazoDevolucao" [ngClass]="{ 'is-invalid':submitted && hasError('prazoDevolucao') }"/>
+          <div class="invalid-feedback" *ngIf="hasError('prazoDevolucao') && hasError('prazoDevolucao')['required']">
+            Por favor informe uma Data de Devolução:
+          </div>
         </div>
         <br>
 

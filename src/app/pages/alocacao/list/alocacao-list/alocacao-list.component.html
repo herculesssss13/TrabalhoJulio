@@ -33,7 +33,7 @@
                 <td>{{loc.dataDevolucaoPrevista}}</td>
                 <td>
                   <span class="float-right">
-                    <button class="btn btn-outline-warning mb-1 btn-sm ">
+                    <button class="btn btn-outline-warning mb-1 btn-sm " (click)="onEdit(loc.id)">
                       atualizar
                     </button>
                     <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onConfirmDelete(loc)">

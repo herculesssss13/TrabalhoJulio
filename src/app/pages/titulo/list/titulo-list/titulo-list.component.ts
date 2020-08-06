@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TituloService } from '../../services/titulo.service';
 import { Titulo } from '../../models/Titulo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-titulo-list',
@@ -14,7 +15,7 @@ export class TituloListComponent implements OnInit {
   tituloSelecionado:Titulo;
   @ViewChild('deleteModal') deleteModal;
 
-  constructor(private tituloService: TituloService) { }
+  constructor(private tituloService: TituloService,private router : Router) { }
 
   ngOnInit(){
 
@@ -47,5 +48,8 @@ export class TituloListComponent implements OnInit {
     );
   }
 
+  onEdit(id){
+    this.router.navigate(['titulo',id]);
+  }
 
 }

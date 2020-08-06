@@ -9,6 +9,8 @@ import { Ator } from 'src/app/pages/ator/models/Ator';
 import { DiretorService } from 'src/app/pages/diretor/services/diretor.service';
 import { Classe } from 'src/app/pages/classe/models/Classe';
 import { ClasseService } from 'src/app/pages/classe/services/classe.service';
+import { ActivatedRoute } from '@angular/router';
+import { map, switchMap } from "rxjs/operators";
 
 @Component({
   selector: 'app-titulo-form',
@@ -30,20 +32,24 @@ export class TituloFormComponent implements OnInit {
               private location:Location,
               private atorService:AtorFormService,
               private diretorService:DiretorService,
-              private classeService:ClasseService
+              private classeService:ClasseService,
+              private route:ActivatedRoute
               ) { }
 
               
   ngOnInit(){
-    this.titulo = new Titulo();
+    const titulo = this.route.snapshot.data['titulo'];
+
+    //this.titulo = new Titulo();
     this.form = this.fb.group({
-      nome:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
-      atores:[null],
-      diretor:[null],
-      classe:[null],
-      ano:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
-      sinopse:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
-      categoria:[null]
+      id:[titulo.id],
+      nome:[titulo.nome,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
+      atores:[titulo.atores],
+      diretor:[titulo.diretor],
+      classe:[titulo.classe],
+      ano:[titulo.ano,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
+      sinopse:[titulo.sinopse,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
+      categoria:[titulo.categoria]
     });
 
     this.atorService.listar().subscribe(dados => this.atores = dados);
@@ -51,17 +57,26 @@ export class TituloFormComponent implements OnInit {
     this.classeService.listar().subscribe(dados => this.classes = dados);
   }
 
+  
+
   onSubmit(){
     this.submitted = true;
     console.log(this.form.value);
     if(this.form.valid){
-      this.tituloService.create(this.form.value).subscribe(
-        sucesso=>{
-          alert('Título Salvo com Sucesso!');
+      let MgsSucesso = 'Titulo Criado com Sucesso!';
+      let MgsError = 'Erro ao Criar Titulo,tente novamente!';
+
+      if(this.form.value.id){
+        MgsSucesso = 'Titulo Alterado com Sucesso!';
+        MgsError = 'Erro ao atualizar Titulo,tente novamente!';
+      }
+
+      this.tituloService.save(this.form.value).subscribe(
+        sucesso =>{
+          alert(MgsSucesso);
           this.location.back();
         },
-        error => console.error(error),
-        ()=> console.log('Request completa')
+        error => console.error(MgsError)
       );
     }
   }

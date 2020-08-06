@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Ator } from '../../models/Ator';
 import { AtorFormService } from '../../services/ator-form.service';
 import { Location} from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ator-form',
@@ -17,26 +19,38 @@ export class AtorFormComponent implements OnInit {
   form: FormGroup;
   submitted =false;
 
-  constructor(private atorService: AtorFormService,private fb:FormBuilder,private location:Location) { }
+  constructor(private atorService: AtorFormService,private fb:FormBuilder,private location:Location,private route:ActivatedRoute) { }
 
-  ngOnInit(): void {
-    this.ator = new Ator();
+  ngOnInit() {
+    
+    const ator = this.route.snapshot.data['ator'];
+
+    //this.ator = new Ator();
     this.form = this.fb.group({
-      nome:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]]
+      id:[ator.id],
+      nome:[ator.nome,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]]
     });
   }
+
 
   onSubmit(){
     this.submitted = true;
     console.log(this.form.value);
     if(this.form.valid){
-      this.atorService.create(this.form.value).subscribe(
-        sucesso=>{
-          alert('Ator Salvo com Sucesso!');
+      let MgsSucesso = 'Ator Criado com Sucesso!';
+      let MgsError = 'Erro ao Criar Ator,tente novamente!';
+
+      if(this.form.value.id){
+        MgsSucesso = 'Ator Alterado com Sucesso!';
+        MgsError = 'Erro ao atualizar Ator,tente novamente!';
+      }
+
+      this.atorService.save(this.form.value).subscribe(
+        sucesso =>{
+          alert(MgsSucesso);
           this.location.back();
         },
-        error => console.error(error),
-        ()=> console.log('Request completa')
+        error => console.error(MgsError)
       );
     }
   }

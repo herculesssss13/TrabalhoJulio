@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Classe } from '../../models/Classe';
 import { ClasseService } from '../../services/classe.service';
 import { Location} from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { map, switchMap } from 'rxjs/operators';
 
 
 
@@ -18,35 +20,41 @@ export class ClasseFormComponent implements OnInit {
   submitted =false;
   public classe:Classe;
 
-  constructor(private classeServico:ClasseService,private fb:FormBuilder,private location:Location) { }
+  constructor(private classeServico:ClasseService,private fb:FormBuilder,private location:Location,private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.classe = new Classe();
+    const classe = this.route.snapshot.data['classe'];
+
+    //this.classe = new Classe();
     this.form = this.fb.group({
-      nome:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
-      valor:[null,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
-      prazoDevolucao:[null]
+      id:[classe.id],
+      nome:[classe.nome,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
+      valor:[classe.valor,[Validators.required, Validators.minLength(1),Validators.maxLength(250)]],
+      prazoDevolucao:[classe.prazoDevolucao]
     });
   }
 
   
   
 
-
-
-
-
   onSubmit(){
     this.submitted = true;
     console.log(this.form.value);
     if(this.form.valid){
-      this.classeServico.create(this.form.value).subscribe(
-        sucesso=>{
-          alert('Classe Salva com Sucesso!');
+      let MgsSucesso = 'Classe Criada com Sucesso!';
+      let MgsError = 'Erro ao Criar Classe,tente novamente!';
+
+      if(this.form.value.id){
+        MgsSucesso = 'Classe Alterada com Sucesso!';
+        MgsError = 'Erro ao atualizar Classe,tente novamente!';
+      }
+
+      this.classeServico.save(this.form.value).subscribe(
+        sucesso =>{
+          alert(MgsSucesso);
           this.location.back();
         },
-        error => console.error(error),
-        ()=> console.log('Request completa')
+        error => console.error(MgsError)
       );
     }
   }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Dependente } from '../models/Dependente';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class DependenteService {
   listar(){
     return this.http.get<Dependente[]>(this.API);
   }
-  create(cliente) {
+  private create(cliente) {
     return this.http.post(this.API, cliente);
   }
 
@@ -31,8 +32,8 @@ export class DependenteService {
     );
   }
 
-  update(item: any): Observable<any> {
-    return this.http.put<any>(`${this.API}`, item);
+  private update(dep){
+    return this.http.put(`${this.API}/${dep.numInscricao}`, dep).pipe(take(1));
   }
 
   show(numInscricao: number): Observable<any> {
@@ -41,5 +42,16 @@ export class DependenteService {
 
   remove(numInscricao){
     return this.http.delete(`${this.API}/${numInscricao}`);
+  }
+
+  loadById(id){
+    return this.http.get<Dependente>(`${this.API}/${id}`);
+  }
+
+  save(dep){
+    if(dep.id){
+      return this.update(dep);
+    }
+    return this.create(dep);
   }
 }

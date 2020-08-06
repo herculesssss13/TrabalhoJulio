@@ -2,6 +2,7 @@ import { Diretor } from './../models/Diretor';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class DiretorService {
   listar(){
     return this.http.get<Diretor[]>(this.API);
   }
-  create(diretor) {
+  private create(diretor) {
     return this.http.post(this.API, diretor);
   }
 
@@ -35,8 +36,8 @@ export class DiretorService {
     );
   }
 
-  update(item: any): Observable<any> {
-    return this.http.put<any>(`${this.API}`, item);
+  private update(diretor){
+    return this.http.put(`${this.API}/${diretor.id}`, diretor).pipe(take(1));
   }
 
   show(id: number): Observable<any> {
@@ -45,5 +46,16 @@ export class DiretorService {
 
   remove(id){
     return this.http.delete(`${this.API}/${id}`);
+  }
+
+  loadById(id){
+    return this.http.get<Diretor>(`${this.API}/${id}`);
+  }
+
+  save(diretor){
+    if(diretor.id){
+      return this.update(diretor);
+    }
+    return this.create(diretor);
   }
 }

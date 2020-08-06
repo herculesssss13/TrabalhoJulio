@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Cliente } from '../models/Cliente';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,24 +17,15 @@ export class ClienteService {
   listar2(){
     return this.http.get<Cliente[]>('http://localhost:8090/socio/listarTudo');
   }
-  create(cliente) {
+  private create(cliente) {
     return this.http.post(this.API, cliente);
   }
 
 
-  salvar(item: Cliente){
-    this.http.post('http://localhost:8090/socio', item).subscribe(
-    res => {
-      alert('Cliente Salvo com Sucesso!');
-    },
-    err => {
-      console.error(err);
-    }
-    );
-  }
+  
 
-  update(item: any): Observable<any> {
-    return this.http.put<any>(`${this.API}`, item);
+  private update(cliente){
+    return this.http.put(`${this.API}/${cliente.numInscricao}`, cliente).pipe(take(1));
   }
 
   show(numInscricao: number): Observable<any> {
@@ -42,5 +34,16 @@ export class ClienteService {
 
   remove(numInscricao){
     return this.http.delete(`${this.API}/${numInscricao}`);
+  }
+
+  loadById(id){
+    return this.http.get<Cliente>(`${this.API}/${id}`);
+  }
+
+  save(cliente){
+    if(cliente.id){
+      return this.update(cliente);
+    }
+    return this.create(cliente);
   }
 }

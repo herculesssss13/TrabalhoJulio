@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../../models/Cliente';
 import { ClienteService } from '../../services/cliente.service';
 import { Dependente } from 'src/app/pages/dependente/models/Dependente';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-list',
@@ -15,7 +16,7 @@ export class ClienteListComponent implements OnInit {
   clienteSelecionado: Cliente;
 
 
-  constructor(private clienteService: ClienteService, private dependenteService: DependenteService) { }
+  constructor(private clienteService: ClienteService, private dependenteService: DependenteService,private router : Router) { }
 
   ngOnInit(){
     this.cliente = new Cliente();
@@ -42,9 +43,9 @@ export class ClienteListComponent implements OnInit {
     );
   }
 
-  salvar() {
-    this.clienteService.salvar(this.cliente);
-    this.listar();
+
+  onEdit(id){
+    this.router.navigate(['cliente',id]);
   }
 
 }

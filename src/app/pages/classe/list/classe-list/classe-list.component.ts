@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Classe } from '../../models/Classe';
 import { ClasseService } from '../../services/classe.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-classe-list',
@@ -11,7 +12,7 @@ export class ClasseListComponent implements OnInit {
   classes: Classe[];
   classe: Classe;
   classeSelecionada:Classe;
-  constructor(private classeService:ClasseService) { }
+  constructor(private classeService:ClasseService,private router : Router) { }
 
   ngOnInit() {
     this.classe = new Classe();
@@ -46,7 +47,9 @@ export class ClasseListComponent implements OnInit {
     this.listar();
   }
 
+  onEdit(id){
+    this.router.navigate(['classe',id]);
+  }
   
-
 
 }
